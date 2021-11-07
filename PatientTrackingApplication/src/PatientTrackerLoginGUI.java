@@ -36,6 +36,7 @@ public class PatientTrackerLoginGUI {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 800, 650);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
 	}
 
 	
