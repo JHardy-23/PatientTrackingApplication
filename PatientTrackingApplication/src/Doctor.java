@@ -2,17 +2,21 @@ import java.util.HashSet;
 import java.util.Random;
 
 public class Doctor{
-    private String Fname, Lname, docId, Address;
+    private String Fname, Lname, docId, Address, emailAddress, Password;
     private char Midinit, sex;
     public static HashSet<String> doctorIds = new HashSet<>();
+    public static HashSet<String> docPass = new HashSet<>();
 
-    public Doctor(String First, char mid, String Last, String Add, char sx){
+    public Doctor(String First, char mid, String Last, String Add, char sx, String emailAdd, String Pass){
         this.Fname = First;
         this.Midinit = mid;
         this.Lname = Last;
         this.docId = generateId();
         this.Address = Add;
         this.sex = sx;
+        this.emailAddress = emailAdd;
+        this.Password = Pass;
+        docPass.add(Pass);
     }
 
     public String getFirstName(){
@@ -57,6 +61,18 @@ public class Doctor{
 
     public void setSex(char newSex){
         this.sex = newSex;
+    }
+
+    public String getEmail(){
+        return this.emailAddress;
+    }
+
+    public void setEmail(String newEmail){
+        this.emailAddress = newEmail;
+    }
+
+    public String getPass(){
+        return this.Password;
     }
 
     public static String generateId(){

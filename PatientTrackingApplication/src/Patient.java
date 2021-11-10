@@ -2,12 +2,14 @@ import java.util.HashSet;
 import java.util.Random;
 
 public class Patient {
-    private String Fname, Lname, Patientid, Address;
+    private String Fname, Lname, Patientid, Address, emailAdd, Password;
     private char Midinit, sex;
     private Insurance ins;
     public static HashSet<String> patientIds = new HashSet<>();
+    public static HashSet<String> patientPass = new HashSet<>();
 
-    public Patient(String Fname, char Minit, String Lname, char sex, String Address, Insurance insCov){
+    public Patient(String Fname, char Minit, String Lname, char sex, String Address, Insurance insCov,
+    String emailAddress, String password){
         this.Fname = Fname;
         this.Lname = Lname;
         this.Midinit = Minit;
@@ -15,6 +17,9 @@ public class Patient {
         this.sex = sex;
         this.Address = Address;
         this.ins = insCov;
+        this.Password = password;
+        patientPass.add(password);
+        this.emailAdd = emailAddress;
     }
 
     public String getFname(){
@@ -63,6 +68,18 @@ public class Patient {
 
     public String getIns(){
         return this.ins.toString();
+    }
+
+    public String getEmail(){
+        return this.emailAdd;
+    }
+
+    public void setEmail(String newEmail){
+        this.emailAdd = newEmail;
+    }
+
+    public String getPass(){
+        return this.Password;
     }
 
     public static String generateId(){
