@@ -4,15 +4,17 @@ import java.util.Random;
 public class Patient {
     private String Fname, Lname, Patientid, Address;
     private char Midinit, sex;
+    private Insurance ins;
     public static HashSet<String> patientIds = new HashSet<>();
 
-    public Patient(String Fname, char Minit, String Lname, char sex, String Address){
+    public Patient(String Fname, char Minit, String Lname, char sex, String Address, Insurance insCov){
         this.Fname = Fname;
         this.Lname = Lname;
         this.Midinit = Minit;
         this.Patientid = generateId();
         this.sex = sex;
         this.Address = Address;
+        this.ins = insCov;
     }
 
     public String getFname(){
@@ -57,6 +59,10 @@ public class Patient {
 
     public void setAddress(String newAddress){
         this.Address = newAddress;
+    }
+
+    public String getIns(){
+        return this.ins.toString();
     }
 
     public static String generateId(){

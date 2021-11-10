@@ -1,4 +1,7 @@
-public class Doctor(){
+import java.util.HashSet;
+import java.util.Random;
+
+public class Doctor{
     private String Fname, Lname, docId, Address;
     private char Midinit, sex;
     public static HashSet<String> doctorIds = new HashSet<>();
@@ -77,4 +80,10 @@ public class Doctor(){
         }
         return false;
     }
+
+    public String toString(){
+        return "\nFirst name: " + this.Fname + "\nMiddle Initial: " + this.Midinit + "\nLast name: " + this.Lname
+        + "\nAddress: " + this.Address + "\nSex: " + this.sex;
+    }
+    
 }
