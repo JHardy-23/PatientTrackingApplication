@@ -10,7 +10,7 @@ public class Insurance{
     /**
      * The constructor for the Insurance class
      */
-    public Insurance(String name, String Id, String grpNumber, ArrayList<String> Covered){
+    public Insurance(String name, String Id, String grpNumber, ArrayList<Patient> Covered){
         this.insName = name;
         this.insId = Id;
         this.grpNum = grpNumber;
