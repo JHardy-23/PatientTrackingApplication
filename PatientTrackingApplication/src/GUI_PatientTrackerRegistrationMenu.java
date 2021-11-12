@@ -1,3 +1,7 @@
+/*The GUI_PatientTrackerRegistrationMenu java class displays the Registration Menu, where the user can select if they are a doctor or 
+ *patient who is going to be registering.
+ * 
+ * */
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;

@@ -1,3 +1,7 @@
+/*The PatientTrackerHomepageGUI java class displays the register and login button, each button should take the user to the respective GUIs. 
+ * The Registration button should move to the Registration Menu page.
+ * The Sign in button should move to the Login Page.
+ * */
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -44,7 +48,7 @@ public class PatientTrackerHomepageGUI {
 		frame.setBounds(100, 100, 800, 650);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+		// Starter Page of Application
 		JLabel HomepageTitle = new JLabel("Patient Tracker");
 		HomepageTitle.setFont(new Font("Algerian", Font.PLAIN, 60));
 		HomepageTitle.setBounds(110, 28, 585, 91);

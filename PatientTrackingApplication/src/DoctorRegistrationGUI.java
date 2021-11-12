@@ -1,3 +1,8 @@
+/*The DoctorRegistrationGUI java class is after the doctor selects I am a doctor in Registration Menu and this class displays information the dotor needs to input. 
+ *This class should have labels of what information the doctor needs to enter using text fields.
+ *Then a confirmation button to complete the registration
+ * 
+ * */
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;

@@ -1,3 +1,6 @@
+/*The PatientTrackerLoginGUI java class will consist of labels and text fields that will be used to ask the patient or doctor logging on to input their email and password.
+ * There will be a confirmation button which will send the user to their account.
+ * */
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
