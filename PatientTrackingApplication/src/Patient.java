@@ -30,6 +30,17 @@ public class Patient {
     }
 
     /**
+     * Constructor for a patient that may be a dependent on an insurance plan
+     */
+    public Patient(String Fname, char Minit, String Lname, Insurance insCov){
+        this.Fname = Fname;
+        this.Midinit = Minit;
+        this.Lname = Lname;
+        this.ins = insCov;
+        this.Patientid = generateId();
+    }
+
+    /**
      * Method that returns the First name of the patient
      */
     public String getFname(){
