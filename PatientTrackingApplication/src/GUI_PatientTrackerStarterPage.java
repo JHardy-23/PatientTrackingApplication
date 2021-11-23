@@ -1,13 +1,8 @@
-/*The PatientRegistrationGUI java class is after the user selects I am a patient in Registration Menu and this class displays information the patient needs to input. 
- *This class should have labels of what information the patient needs to enter using text fields.
- *Then a confirmation button to complete the registration.
- * 
- * */
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-public class PatientRegistrationGUI {
+public class GUI_PatientTrackerStarterPage {
 
 	private JFrame frame;
 
@@ -18,7 +13,7 @@ public class PatientRegistrationGUI {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PatientRegistrationGUI window = new PatientRegistrationGUI();
+					GUI_PatientTrackerStarterPage window = new GUI_PatientTrackerStarterPage();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -30,7 +25,7 @@ public class PatientRegistrationGUI {
 	/**
 	 * Create the application.
 	 */
-	public PatientRegistrationGUI() {
+	public GUI_PatientTrackerStarterPage() {
 		initialize();
 	}
 
@@ -39,9 +34,8 @@ public class PatientRegistrationGUI {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 800, 650);
+		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
 	}
 
 }
