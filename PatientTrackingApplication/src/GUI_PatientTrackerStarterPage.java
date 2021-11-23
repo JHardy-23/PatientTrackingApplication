@@ -1,6 +1,11 @@
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class GUI_PatientTrackerStarterPage {
 
@@ -34,8 +39,31 @@ public class GUI_PatientTrackerStarterPage {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 27));
+		frame.setBounds(100, 100, 800, 650);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		// Starter Page of Application
+		JLabel HomepageTitle = new JLabel("Patient Tracker");
+		HomepageTitle.setFont(new Font("Algerian", Font.PLAIN, 60));
+		HomepageTitle.setBounds(110, 28, 585, 91);
+		frame.getContentPane().add(HomepageTitle);
+		
+		JButton PatientButton = new JButton("Sign In");
+		PatientButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		PatientButton.setBounds(469, 469, 197, 41);
+		frame.getContentPane().add(PatientButton);
+		
+		JButton RegisterButton = new JButton("Register");
+		RegisterButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		RegisterButton.setBounds(102, 469, 197, 41);
+		frame.getContentPane().add(RegisterButton);
 	}
 
 }
