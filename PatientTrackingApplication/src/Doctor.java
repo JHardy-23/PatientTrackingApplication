@@ -75,20 +75,6 @@ public class Doctor extends User implements Serializable {
         return this.docId;
     }
 
-    /**
-     * Method that returns the Address of a doctor
-     */
-    public String getAddress(){
-        return this.Address;
-    }
-
-    /**
-    Method that sets the address of a doctor
-     */
-    public void setAddress(String newAdd){
-        this.Address = newAdd;
-    }
-
     /** 
      * Method that returns the sex of a doctor
      */
@@ -160,7 +146,7 @@ public class Doctor extends User implements Serializable {
      */
     public String toString(){
         return "\nFirst name: " + this.Fname + "\nLast name: " + this.Lname + "\nUsername: " + this.username +
-        "\nAddress: " + this.Address + "\nPhone Number: " + this.phoneNumber;
+        "\nPhone Number: " + this.phoneNumber;
     }
     
 }
