@@ -1,6 +1,5 @@
 package GUI_Package;
-import java.awt.EventQueue;
-import java.awt.Font;
+import java.awt.*;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -11,15 +10,15 @@ import javax.swing.JButton;
 
 public class GUI_PatientRegistrationPage {
 
-	private JFrame frame;
-	private JTextField PatientIDTextField;
-	private JTextField LastNameTextField;
-	private JTextField FirstNameTextField;
-	private JTextField PhoneNumberTextField;
-	private JTextField EmailTextField;
-	private JTextField UserNameTextField;
-	private JPasswordField passwordTextField;
-	private JPasswordField RepeatPasswordTextField;
+	public JFrame frame;
+	public JTextField PatientIDTextField;
+	public JTextField LastNameTextField;
+	public JTextField FirstNameTextField;
+	public JTextField PhoneNumberTextField;
+	public JTextField EmailTextField;
+	public JTextField UserNameTextField;
+	public JPasswordField passwordTextField;
+	public JPasswordField RepeatPasswordTextField;
 
 	/**
 	 * Launch the application.
@@ -135,5 +134,14 @@ public class GUI_PatientRegistrationPage {
 		RepeatPasswordTextField = new JPasswordField();
 		RepeatPasswordTextField.setBounds(299, 418, 236, 39);
 		frame.getContentPane().add(RepeatPasswordTextField);
+	}
+
+	public JButton getRegisterButton() {
+		for(Component c : frame.getContentPane().getComponents()) {
+			if( c instanceof JButton && ((JButton) c).getText().equals("Register") ) {
+				return (JButton)c;
+			}
+		}
+		return null;
 	}
 }
