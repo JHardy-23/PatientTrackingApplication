@@ -1,13 +1,14 @@
+package GUI_Package;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
-public class GUI_PatientTrackerRegistrationMenu {
+public class GUI_PatientTrackerStarterPage {
 
 	private JFrame frame;
 
@@ -18,7 +19,7 @@ public class GUI_PatientTrackerRegistrationMenu {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GUI_PatientTrackerRegistrationMenu window = new GUI_PatientTrackerRegistrationMenu();
+					GUI_PatientTrackerStarterPage window = new GUI_PatientTrackerStarterPage();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -30,7 +31,7 @@ public class GUI_PatientTrackerRegistrationMenu {
 	/**
 	 * Create the application.
 	 */
-	public GUI_PatientTrackerRegistrationMenu() {
+	public GUI_PatientTrackerStarterPage() {
 		initialize();
 	}
 
@@ -49,21 +50,21 @@ public class GUI_PatientTrackerRegistrationMenu {
 		HomepageTitle.setBounds(110, 28, 585, 91);
 		frame.getContentPane().add(HomepageTitle);
 		
-		JLabel RegistrationTitle = new JLabel("Registration");
-		RegistrationTitle.setFont(new Font("Tahoma", Font.BOLD, 40));
-		RegistrationTitle.setBounds(242, 126, 273, 49);
-		frame.getContentPane().add(RegistrationTitle);
-		
-		JButton RegisterDoctorButton = new JButton("I am a Doctor");
-		RegisterDoctorButton.addActionListener(new ActionListener() {
+		JButton PatientButton = new JButton("Sign In");
+		PatientButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		RegisterDoctorButton.setBounds(253, 297, 247, 41);
-		frame.getContentPane().add(RegisterDoctorButton);
+		PatientButton.setBounds(469, 469, 197, 41);
+		frame.getContentPane().add(PatientButton);
 		
-		JButton RegisterPatientButton = new JButton("I am a Patient");
-		RegisterPatientButton.setBounds(253, 400, 247, 41);
-		frame.getContentPane().add(RegisterPatientButton);
+		JButton RegisterButton = new JButton("Register");
+		RegisterButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		RegisterButton.setBounds(102, 469, 197, 41);
+		frame.getContentPane().add(RegisterButton);
 	}
+
 }
