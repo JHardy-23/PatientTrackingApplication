@@ -1,26 +1,26 @@
 import java.util.HashSet;
 import java.util.Random;
+import java.io.*;
 
 /**
  * The Doctor class represents doctors that work at the establishment, each doctor will have their
  * own ID and password which are checked using a hashset.
  */
 
-public class Doctor{
-    private String Fname, Lname, docId, Address, emailAddress, Password, phoneNumber, username;
+public class Doctor extends User implements Serializable {
+    private String docId;
     public static HashSet<String> doctorIds = new HashSet<>();
     public static HashSet<String> docPass = new HashSet<>();
 
     /**
      * Constructor for the Doctor object
      */
-    public Doctor(String First, String Last, String Add, String uName, String emailAdd, String Pass, String pNumber){
+    public Doctor(String First, String Last, String uName, String emailAdd, String Pass, String pNumber){
         this.Fname = First;
         this.Lname = Last;
         this.username = uName;
         this.docId = generateId();
         this.phoneNumber = pNumber;
-        this.Address = Add;
         this.emailAddress = emailAdd;
         this.Password = Pass;
         docPass.add(Pass);

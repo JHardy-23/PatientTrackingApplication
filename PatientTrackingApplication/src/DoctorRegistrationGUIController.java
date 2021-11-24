@@ -29,11 +29,23 @@ public class DoctorRegistrationGUIController {
                 int verifyResult = VerifyTextFields();
                 switch(verifyResult) {
                     case 0:
-                        if( ReadDoctorsFromFile() && WriteDoctorsToFile() ) {
+                        try {
+                            // Get updated HashSet from serialized HashSet file
+                            ///User.ReadSetFromUserFile();
+
+                            // Add new user to users HashSet
+                            ///User.AddUser(new Doctor(gui.FirstNameTextField.getText(), gui.LastNameTextField.getText(), gui.UserNameTextField.getText(), gui.EmailTextField.getText(), gui.passwordTextField.getText(), gui.PhoneNumberTextField.getText()));
+
+                            // Write new HashSet to serialized HashSet file
+                            ///User.WriteSetToUserFile();
+
+                            // Display success message
                             JOptionPane.showMessageDialog(gui.frame, "Successfully registered new doctor.", "Success!", JOptionPane.INFORMATION_MESSAGE);
+
                             // Signal main to open Home Page
+                            // ADD CODE
                         }
-                        else {
+                        catch(Exception ex) {
                             JOptionPane.showMessageDialog(gui.frame, "Failed to register new doctor. Please try again.", "ERROR", JOptionPane.ERROR_MESSAGE);
                         }
                         break;

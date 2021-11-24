@@ -1,24 +1,23 @@
 import java.util.HashSet;
 import java.util.Random;
+import java.io.*;
 
 /**
  * The patient class represents patients that go to the docotrs office, each patient
  * will have their own ID and Password which are added to a hashset
  */
-public class Patient {
+public class Patient extends User implements Serializable {
     private String firstName, lastName, Patientid, emailAdd, Password, Username, phoneNumber;
-    private Insurance ins;
     public static HashSet<String> patientIds = new HashSet<>();
     public static HashSet<String> patientPass = new HashSet<>();
 
     /**
      * Constructor for the patient class
      */
-    public Patient(String Fname, String Lname, String Uname, String pNumber, Insurance insCov, String emailAddress, String password){
+    public Patient(String Fname, String Lname, String Uname, String pNumber, String emailAddress, String password){
         this.firstName = Fname;
         this.lastName = Lname;
         this.Patientid = generateId();
-        this.ins = insCov;
         this.Username = Uname;
         this.phoneNumber = pNumber;
         this.Password = password;
@@ -29,10 +28,9 @@ public class Patient {
     /**
      * Constructor for a patient that may be a dependent on an insurance plan
      */
-    public Patient(String Fname, String Lname, Insurance insCov){
+    public Patient(String Fname, String Lname){
         this.firstName = Fname;
         this.lastName = Lname;
-        this.ins = insCov;
         this.Patientid = generateId();
     }
 
@@ -98,21 +96,6 @@ public class Patient {
     }
 
     /**
-     * Method that returns the toString of a patients insurance
-     */
-    public String getIns(){
-        return this.ins.toString();
-    }
-
-
-    /**
-     * Method that sets the insurance of a patient
-     */
-    public void setIns(Insurance newIns){
-        this.ins = newIns;
-    }
-
-    /**
      * Method that returns the email of a patient
      */
     public String getEmail(){
@@ -166,7 +149,7 @@ public class Patient {
      */
     public String toString(){
         return "First name: " + this.firstName +  "\nLast name: " + this.lastName + "\nUsername:" + this.Username
-         + "\nPatient ID: " + this.Patientid + "\nPhone Number: " + this.phoneNumber + "\nInsurance Provider: " + this.ins.getInsuranceName();
+         + "\nPatient ID: " + this.Patientid + "\nPhone Number: " + this.phoneNumber;
     }
 
 }
