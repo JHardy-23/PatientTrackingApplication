@@ -79,8 +79,18 @@ public class GUI_PatientTrackerLoginPage {
 		frame.getContentPane().add(passwordTextField);
 		
 		JButton SignInButton = new JButton("Login");
-		SignInButton.setBounds(291, 424, 171, 41);
+		SignInButton.setBounds(291, 436, 171, 41);
 		frame.getContentPane().add(SignInButton);
+		
+		JButton forgotPasswordButton = new JButton("Forgot Password?");
+		forgotPasswordButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		forgotPasswordButton.setBounds(524, 390, 146, 23);
+		frame.getContentPane().add(forgotPasswordButton);
+		
+		JButton Login_RegisterButton = new JButton("Don't have an account? Click Here");
+		Login_RegisterButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		Login_RegisterButton.setBounds(268, 487, 220, 23);
+		frame.getContentPane().add(Login_RegisterButton);
 	}
 
 }
