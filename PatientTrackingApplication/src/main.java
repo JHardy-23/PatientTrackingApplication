@@ -23,9 +23,9 @@ import javafx.scene.control.Label;
  *
  * @author cmn68
  */
-public class main extends Application {
+public class main /*extends Application*/ {
     
-    @Override
+    /*@Override
     public void start(Stage stage) throws Exception {
         try{
         Parent root = FXMLLoader.load(getClass().getResources("LoginGUI.fxml"));
@@ -39,11 +39,8 @@ public class main extends Application {
         }
     }
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         launch(args);
-    }
+    }*/
     
 }
