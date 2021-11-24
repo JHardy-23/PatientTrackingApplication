@@ -7,20 +7,19 @@ import java.util.Random;
  */
 
 public class Doctor{
-    private String Fname, Lname, docId, Address, emailAddress, Password, phoneNumber, username;
+    private String Fname, Lname, docId, emailAddress, Password, phoneNumber, username;
     public static HashSet<String> doctorIds = new HashSet<>();
     public static HashSet<String> docPass = new HashSet<>();
 
     /**
      * Constructor for the Doctor object
      */
-    public Doctor(String First, String Last, String Add, String uName, String emailAdd, String Pass, String pNumber){
+    public Doctor(String First, String Last, String uName, String emailAdd, String Pass, String pNumber){
         this.Fname = First;
         this.Lname = Last;
         this.username = uName;
         this.docId = generateId();
         this.phoneNumber = pNumber;
-        this.Address = Add;
         this.emailAddress = emailAdd;
         this.Password = Pass;
         docPass.add(Pass);
@@ -73,20 +72,6 @@ public class Doctor{
      */
     public String getdocId(){
         return this.docId;
-    }
-
-    /**
-     * Method that returns the Address of a doctor
-     */
-    public String getAddress(){
-        return this.Address;
-    }
-
-    /**
-    Method that sets the address of a doctor
-     */
-    public void setAddress(String newAdd){
-        this.Address = newAdd;
     }
 
     /** 
@@ -160,7 +145,7 @@ public class Doctor{
      */
     public String toString(){
         return "\nFirst name: " + this.Fname + "\nLast name: " + this.Lname + "\nUsername: " + this.username +
-        "\nAddress: " + this.Address + "\nPhone Number: " + this.phoneNumber;
+        "\nPhone Number: " + this.phoneNumber;
     }
     
 }
