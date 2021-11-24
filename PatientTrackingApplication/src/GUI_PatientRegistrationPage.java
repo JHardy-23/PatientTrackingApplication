@@ -3,6 +3,7 @@ import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
@@ -16,8 +17,8 @@ public class GUI_PatientRegistrationPage {
 	private JTextField PhoneNumberTextField;
 	private JTextField EmailTextField;
 	private JTextField UserNameTextField;
-	private JTextField textField;
-	private JTextField RepeatPasswordLabel;
+	private JPasswordField passwordTextField;
+	private JPasswordField RepeatPasswordTextField;
 
 	/**
 	 * Launch the application.
@@ -117,23 +118,21 @@ public class GUI_PatientRegistrationPage {
 		PasswordLabel.setBounds(26, 381, 199, 33);
 		frame.getContentPane().add(PasswordLabel);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		textField.setBounds(26, 418, 236, 39);
-		frame.getContentPane().add(textField);
-		
 		JLabel lblRepeatPassword = new JLabel("Repeat Password");
 		lblRepeatPassword.setHorizontalAlignment(SwingConstants.LEFT);
 		lblRepeatPassword.setBounds(299, 381, 236, 33);
 		frame.getContentPane().add(lblRepeatPassword);
 		
-		RepeatPasswordLabel = new JTextField();
-		RepeatPasswordLabel.setColumns(10);
-		RepeatPasswordLabel.setBounds(299, 418, 236, 39);
-		frame.getContentPane().add(RepeatPasswordLabel);
-		
 		JButton RegisterButton = new JButton("Register");
 		RegisterButton.setBounds(302, 493, 171, 41);
 		frame.getContentPane().add(RegisterButton);
+		
+		passwordTextField = new JPasswordField();
+		passwordTextField.setBounds(26, 418, 236, 39);
+		frame.getContentPane().add(passwordTextField);
+		
+		RepeatPasswordTextField = new JPasswordField();
+		RepeatPasswordTextField.setBounds(299, 418, 236, 39);
+		frame.getContentPane().add(RepeatPasswordTextField);
 	}
 }
