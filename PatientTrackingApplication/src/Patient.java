@@ -6,8 +6,7 @@ import java.util.Random;
  * will have their own ID and Password which are added to a hashset
  */
 public class Patient {
-    private String Fname, Lname, Patientid, Address, emailAdd, Password;
-    private char Midinit, sex;
+    private String firstName, lastName, Patientid, emailAdd, Password, Username, phoneNumber;
     private Insurance ins;
     public static HashSet<String> patientIds = new HashSet<>();
     public static HashSet<String> patientPass = new HashSet<>();
@@ -15,15 +14,13 @@ public class Patient {
     /**
      * Constructor for the patient class
      */
-    public Patient(String Fname, char Minit, String Lname, char sex, String Address, Insurance insCov,
-    String emailAddress, String password){
-        this.Fname = Fname;
-        this.Lname = Lname;
-        this.Midinit = Minit;
+    public Patient(String Fname, String Lname, String Uname, String pNumber, Insurance insCov, String emailAddress, String password){
+        this.firstName = Fname;
+        this.lastName = Lname;
         this.Patientid = generateId();
-        this.sex = sex;
-        this.Address = Address;
         this.ins = insCov;
+        this.Username = Uname;
+        this.phoneNumber = pNumber;
         this.Password = password;
         patientPass.add(password);
         this.emailAdd = emailAddress;
@@ -32,10 +29,9 @@ public class Patient {
     /**
      * Constructor for a patient that may be a dependent on an insurance plan
      */
-    public Patient(String Fname, char Minit, String Lname, Insurance insCov){
-        this.Fname = Fname;
-        this.Midinit = Minit;
-        this.Lname = Lname;
+    public Patient(String Fname, String Lname, Insurance insCov){
+        this.firstName = Fname;
+        this.lastName = Lname;
         this.ins = insCov;
         this.Patientid = generateId();
     }
@@ -44,41 +40,41 @@ public class Patient {
      * Method that returns the First name of the patient
      */
     public String getFname(){
-        return this.Fname;
+        return this.firstName;
     }
 
     /**
      * Method that sets the First name of a patient
      */
     public void setFname(String newFname){
-        this.Fname = newFname;
+        this.firstName = newFname;
     }
 
     /**
      * Method that returns the middle initial of a patient
      */
-    public char getMidinit(){
-        return this.Midinit;
+    public String getPhonenumber(){
+        return this.phoneNumber;
     }
     
     /**
      * Method that sets the middle initial of a paitent
      */
-    public void setMidinit(char newInit){
-        this.Midinit = newInit;
+    public void setPhoneNumber(String newPnumber){
+        this.phoneNumber = newPnumber;
     }
 
     /**
      * Method that returns the last name of a patient
      */
     public String getLname(){
-        return this.Lname;
+        return this.lastName;
     }
     /**
      * Method that sets the last name of a patient
      */
     public void setLname(String newLname){
-        this.Lname = newLname;
+        this.lastName = newLname;
     }
 
     /**
@@ -87,33 +83,18 @@ public class Patient {
     public String getPatientid(){
         return this.Patientid;
     }
-
-    /**
-     * Method that returns the sex of a patient
-     */
-    public char getSex(){
-        return this.sex;
-    }
-
-    /**
-     * Method that sets the sex of a patient
-     */
-    public void setSex(char newSex){
-        this.sex = newSex;
-    }
-
     /**
      * Method that returns the address of a patient
      */
-    public String getAddress(){
-        return this.Address;
+    public String getUsername(){
+        return this.Username;
     }
 
     /**
      * Method that sets the address of a patient
      */
-    public void setAddress(String newAddress){
-        this.Address = newAddress;
+    public void setUsername(String newUsername){
+        this.Username = newUsername;
     }
 
     /**
@@ -121,6 +102,14 @@ public class Patient {
      */
     public String getIns(){
         return this.ins.toString();
+    }
+
+
+    /**
+     * Method that sets the insurance of a patient
+     */
+    public void setIns(Insurance newIns){
+        this.ins = newIns;
     }
 
     /**
@@ -168,10 +157,7 @@ public class Patient {
      * make another one
      */
     public static boolean checkId(String id){
-        if(patientIds.contains(id) || id.charAt(0) == '0'){
-            return true;
-        }
-        return false;
+        return patientIds.contains(id) || id.charAt(0) == '0';
     }
 
     /**
@@ -179,8 +165,8 @@ public class Patient {
      * organized fashion
      */
     public String toString(){
-        return "First name: " + this.Fname + "\nMiddle Initial: " + this.Midinit + "\nLast name: " + this.Lname
-         + "\nPatient ID: " + this.Patientid + "\nSex: " + this.sex + "\nAddress: " + this.Address;
+        return "First name: " + this.firstName +  "\nLast name: " + this.lastName + "\nUsername:" + this.Username
+         + "\nPatient ID: " + this.Patientid + "\nPhone Number: " + this.phoneNumber + "\nInsurance Provider: " + this.ins.getInsuranceName();
     }
 
 }

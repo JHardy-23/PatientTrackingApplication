@@ -7,21 +7,20 @@ import java.util.Random;
  */
 
 public class Doctor{
-    private String Fname, Lname, docId, Address, emailAddress, Password;
-    private char Midinit, sex;
+    private String Fname, Lname, docId, Address, emailAddress, Password, phoneNumber, username;
     public static HashSet<String> doctorIds = new HashSet<>();
     public static HashSet<String> docPass = new HashSet<>();
 
     /**
      * Constructor for the Doctor object
      */
-    public Doctor(String First, char mid, String Last, String Add, char sx, String emailAdd, String Pass){
+    public Doctor(String First, String Last, String Add, String uName, String emailAdd, String Pass, String pNumber){
         this.Fname = First;
-        this.Midinit = mid;
         this.Lname = Last;
+        this.username = uName;
         this.docId = generateId();
+        this.phoneNumber = pNumber;
         this.Address = Add;
-        this.sex = sx;
         this.emailAddress = emailAdd;
         this.Password = Pass;
         docPass.add(Pass);
@@ -58,15 +57,15 @@ public class Doctor{
     /**
      * Method that returns the middle initial of a doctor
      */
-    public char getMidinit(){
-        return this.Midinit;
+    public String getUsername(){
+        return this.username;
     }
 
     /**
      * Method that sets the middle initial of a doctor
      */
-    public void setMidinit(char newM){
-        this.Midinit = newM;
+    public void setUsername(String newUname){
+        this.username = newUname;
     }
 
     /**
@@ -93,15 +92,15 @@ public class Doctor{
     /** 
      * Method that returns the sex of a doctor
      */
-    public char getSex(){
-        return this.sex;
+    public String getpNumber(){
+        return this.phoneNumber;
     }
 
     /**
      * Method that sets the sex of a doctor
      */
-    public void setSex(char newSex){
-        this.sex = newSex;
+    public void setPnumber(String newPnumber){
+        this.phoneNumber = newPnumber;
     }
 
     /**
@@ -160,8 +159,8 @@ public class Doctor{
      * ToString method that returns the Doctor data in an organized way
      */
     public String toString(){
-        return "\nFirst name: " + this.Fname + "\nMiddle Initial: " + this.Midinit + "\nLast name: " + this.Lname
-        + "\nAddress: " + this.Address + "\nSex: " + this.sex;
+        return "\nFirst name: " + this.Fname + "\nLast name: " + this.Lname + "\nUsername: " + this.username +
+        "\nAddress: " + this.Address + "\nPhone Number: " + this.phoneNumber;
     }
     
 }
