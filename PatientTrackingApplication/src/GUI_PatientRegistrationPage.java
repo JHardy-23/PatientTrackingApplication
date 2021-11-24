@@ -6,8 +6,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
-import java.awt.SystemColor;
-import java.awt.Color;
 
 public class GUI_PatientRegistrationPage {
 
