@@ -11,7 +11,6 @@ import javax.swing.JButton;
 public class GUI_PatientRegistrationPage {
 
 	public JFrame frame;
-	public JTextField PatientIDTextField;
 	public JTextField LastNameTextField;
 	public JTextField FirstNameTextField;
 	public JTextField PhoneNumberTextField;
@@ -58,31 +57,22 @@ public class GUI_PatientRegistrationPage {
 		RegistrationTitleLabel.setBounds(96, 0, 585, 91);
 		frame.getContentPane().add(RegistrationTitleLabel);
 		
-		JLabel PatientIDLabel = new JLabel("Patient ID");
-		PatientIDLabel.setBounds(26, 81, 155, 35);
-		frame.getContentPane().add(PatientIDLabel);
-		
-		PatientIDTextField = new JTextField();
-		PatientIDTextField.setBounds(26, 119, 155, 39);
-		frame.getContentPane().add(PatientIDTextField);
-		PatientIDTextField.setColumns(10);
-		
 		JLabel LastNameLabel = new JLabel("Last Name");
-		LastNameLabel.setBounds(441, 81, 155, 35);
+		LastNameLabel.setBounds(274, 81, 155, 35);
 		frame.getContentPane().add(LastNameLabel);
 		
 		LastNameTextField = new JTextField();
-		LastNameTextField.setBounds(441, 119, 236, 39);
+		LastNameTextField.setBounds(274, 119, 236, 39);
 		frame.getContentPane().add(LastNameTextField);
 		LastNameTextField.setColumns(10);
 		
 		JLabel FirstNameLabel = new JLabel("First Name");
-		FirstNameLabel.setBounds(195, 81, 155, 35);
+		FirstNameLabel.setBounds(26, 81, 155, 35);
 		frame.getContentPane().add(FirstNameLabel);
 		
 		FirstNameTextField = new JTextField();
 		FirstNameTextField.setColumns(10);
-		FirstNameTextField.setBounds(195, 119, 236, 39);
+		FirstNameTextField.setBounds(26, 119, 236, 39);
 		frame.getContentPane().add(FirstNameTextField);
 		
 		JLabel PhoneNumberLabel = new JLabel("Phone Number");
