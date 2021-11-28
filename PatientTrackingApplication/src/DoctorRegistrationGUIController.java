@@ -4,13 +4,11 @@
  * and open the template in the editor.
  */
 
-import javafx.scene.control.DialogPane;
+
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 import javax.swing.JOptionPane;
 
@@ -31,13 +29,13 @@ public class DoctorRegistrationGUIController {
                     case 0:
                         try {
                             // Get updated HashSet from serialized HashSet file
-                            ///User.ReadSetFromUserFile();
+                            User.ReadSetFromUserFile();
 
                             // Add new user to users HashSet
-                            ///User.AddUser(new Doctor(gui.FirstNameTextField.getText(), gui.LastNameTextField.getText(), gui.UserNameTextField.getText(), gui.EmailTextField.getText(), gui.passwordTextField.getText(), gui.PhoneNumberTextField.getText()));
+                            User.AddUser(new Doctor(gui.FirstNameTextField.getText(), gui.LastNameTextField.getText(), gui.UserNameTextField.getText(), gui.EmailTextField.getText(), gui.passwordTextField.getText(), gui.PhoneNumberTextField.getText()));
 
                             // Write new HashSet to serialized HashSet file
-                            ///User.WriteSetToUserFile();
+                            User.WriteSetToUserFile();
 
                             // Display success message
                             JOptionPane.showMessageDialog(gui.frame, "Successfully registered new doctor.", "Success!", JOptionPane.INFORMATION_MESSAGE);

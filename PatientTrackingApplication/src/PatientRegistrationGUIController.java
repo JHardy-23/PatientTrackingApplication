@@ -31,13 +31,13 @@ public class PatientRegistrationGUIController {
                     case 0:
                         try {
                             // Get updated HashSet from serialized HashSet file
-                            ///User.ReadSetFromUserFile();
+                            User.ReadSetFromUserFile();
 
                             // Add new user to users HashSet
-                            ///User.AddUser(new Patient(gui.FirstNameTextField.getText(), gui.LastNameTextField.getText(), gui.UserNameTextField.getText(), gui.PhoneNumberTextField.getText(), gui.EmailTextField.getText(), gui.passwordTextField.getText()));
+                            User.AddUser(new Patient(gui.FirstNameTextField.getText(), gui.LastNameTextField.getText(), gui.UserNameTextField.getText(), gui.PhoneNumberTextField.getText(), gui.EmailTextField.getText(), gui.passwordTextField.getText()));
 
                             // Write new HashSet to serialized HashSet file
-                            ///User.WriteSetToUserFile();
+                            User.WriteSetToUserFile();
 
                             // Display success message
                             JOptionPane.showMessageDialog(gui.frame, "Successfully registered new patient.", "Success!", JOptionPane.INFORMATION_MESSAGE);

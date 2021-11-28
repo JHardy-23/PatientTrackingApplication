@@ -1,56 +1,45 @@
 import java.util.HashSet;
-import java.util.Random;
 import java.io.*;
+import java.util.Random;
 
 public abstract class User implements Serializable {
     protected String Fname, Lname, Address, emailAddress, phoneNumber, username, Password;
     public static HashSet<User> users = new HashSet<User>();
-    private static final String patientsFileName = "patients.ser", doctorsFileName = "doctors.ser";
+    public static HashSet<String> ids = new HashSet<String>();
+    private static final String UsersFileName = "users.ser";
 
     /**
      * Read users from file to update users HashSet
      */
     public static void ReadSetFromUserFile() throws IOException, ClassNotFoundException {
         // Reset HashSet
-        users = new HashSet<User>();
+        users.clear();
 
         // Check if file exists
-        File file = new File(patientsFileName);
+        File file = new File(UsersFileName);
         if( file.exists() ) {
             // Open input streams
             FileInputStream pInput = new FileInputStream(file);
             ObjectInputStream pOInput = new ObjectInputStream(pInput);
-            FileInputStream dInput = new FileInputStream(file);
-            ObjectInputStream dOInput = new ObjectInputStream(dInput);
 
-            // Read from Patient input file
-            while(true) {
-                Object oUser = pOInput.readObject();
-                if( oUser == null )
-                    break;
-                users.add((Patient)oUser);
-            }
-
-            // Read from Doctor input file
-            while(true) {
-                Object oUser = dOInput.readObject();
-                if( oUser == null )
-                    break;
-                users.add((Doctor)oUser);
-            }
+            // Read from HashSet input file
+            users = (HashSet<User>)pOInput.readObject();
+            ids = (HashSet<String>)pOInput.readObject();
 
             // Close file streams
             pOInput.close();
             pInput.close();
 
-            dOInput.close();
-            dInput.close();
-
             // Print debug message
-            System.out.println("Serialized Data was read from file " + patientsFileName);
+            System.out.println("Serialized Data was read from file " + UsersFileName);
             System.out.println("HashSet:\n");
+            System.out.println("users HashSet:\n");
             for(User u : users) {
-                System.out.println(u);
+                System.out.println(u + "\n");
+            }
+            System.out.println("ids HashSet:\n");
+            for(String id : ids) {
+                System.out.println(id + "\n");
             }
         }
     }
@@ -60,43 +49,63 @@ public abstract class User implements Serializable {
      */
     public static void WriteSetToUserFile() throws IOException {
         // Open output streams
-        FileOutputStream pOutput = new FileOutputStream(patientsFileName);
+        FileOutputStream pOutput = new FileOutputStream(UsersFileName);
         ObjectOutputStream pOOutput = new ObjectOutputStream(pOutput);
-        FileOutputStream dOutput = new FileOutputStream(doctorsFileName);
-        ObjectOutputStream dOOutput = new ObjectOutputStream(pOutput);
-
-        // Convert HashSet to array
-        Object[] usersArray = users.toArray();
 
         // Write users HashSet to output file
-        for( Object user : usersArray ) {
-            if( user instanceof Patient ) {
-                pOOutput.writeObject(user);
-            }
-            else {
-                dOOutput.writeObject(user);
-            }
-        }
-        // Write null to end as a sign that it is the end of the list
-        pOOutput.writeObject(null);
-        dOOutput.writeObject(null);
+        pOOutput.writeObject(users);
+        pOOutput.writeObject(ids);
 
         // Close file streams
         pOOutput.close();
-        dOOutput.close();
-
         pOutput.close();
-        dOutput.close();
 
         // Print debug message
-        System.out.println("Serialized Data is saved in files " + patientsFileName + " and " + doctorsFileName);
+        System.out.println("Serialized Data is saved in file " + UsersFileName + ".");
+        System.out.println("HashSet:\n");
+        System.out.println("users HashSet:\n");
+        for(User u : users) {
+            System.out.println(u + "\n");
+        }
+        System.out.println("ids HashSet:\n");
+        for(String id : ids) {
+            System.out.println(id + "\n");
+        }
     }
 
     /**
      * Read users from file to update users HashSet
      */
     public static boolean AddUser( User user ) {
-        return users.add(user);
+        return users.add(user) && ids.add(user.getID());
+    }
+
+    /**
+     * Method that generates a random string that is a length of 10,
+     * is all integers, doesn't start with the integer zero and doesn't
+     * already exist
+     */
+    public static String generateId(){
+        Random rand = new Random();
+        String idGen = "";
+        for(int i = 0; i < 12; i++){
+            int newRan = rand.nextInt(10);
+            idGen += Integer.toString(newRan);
+            if(checkId(idGen) && idGen.length() == 12){
+                i = 0;
+                idGen = "";
+            }
+        }
+        return idGen;
+    }
+
+    /**
+     * Helper function for generate ID, checks that the hashset doesn't contain
+     * a newly generated doctor's ID and that it doesn't start with zero.
+     * Returns true if the ID is not valid, and false if it is.
+     */
+    public static boolean checkId(String id){
+        return ids.contains(id) || id.charAt(0) == '0';
     }
 
     /**
@@ -183,10 +192,15 @@ public abstract class User implements Serializable {
         this.emailAddress = newEmail;
     }
 
+    public abstract String getID();
+
     /**
      *Method that returns the password of a doctor
      */
     public String getPass(){
         return this.Password;
     }
+
+    @Override
+    public abstract int hashCode();
 }

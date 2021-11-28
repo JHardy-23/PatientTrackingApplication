@@ -7,140 +7,38 @@ import java.io.*;
  * will have their own ID and Password which are added to a hashset
  */
 public class Patient extends User implements Serializable {
-    private String firstName, lastName, Patientid, emailAdd, Password, Username, phoneNumber;
-    public static HashSet<String> patientIds = new HashSet<>();
-    public static HashSet<String> patientPass = new HashSet<>();
+    private String patientId;
 
     /**
      * Constructor for the patient class
      */
-    public Patient(String Fname, String Lname, String Uname, String pNumber, String emailAddress, String password){
-        this.firstName = Fname;
-        this.lastName = Lname;
-        this.Patientid = generateId();
-        this.Username = Uname;
-        this.phoneNumber = pNumber;
+    public Patient(String Fname, String Lname, String username, String phoneNumber, String emailAddress, String password){
+        this.Fname = Fname;
+        this.Lname = Lname;
+        this.patientId = generateId();
+        this.username = username;
+        this.phoneNumber = phoneNumber;
         this.Password = password;
-        patientPass.add(password);
-        this.emailAdd = emailAddress;
+        this.emailAddress = emailAddress;
     }
 
     /**
      * Constructor for a patient that may be a dependent on an insurance plan
      */
     public Patient(String Fname, String Lname){
-        this.firstName = Fname;
-        this.lastName = Lname;
-        this.Patientid = generateId();
+        this.Fname = Fname;
+        this.Lname = Lname;
+        this.patientId = generateId();
     }
 
-    /**
-     * Method that returns the First name of the patient
-     */
-    public String getFname(){
-        return this.firstName;
+
+    public String getID() {
+        return patientId;
     }
 
-    /**
-     * Method that sets the First name of a patient
-     */
-    public void setFname(String newFname){
-        this.firstName = newFname;
-    }
-
-    /**
-     * Method that returns the middle initial of a patient
-     */
-    public String getPhonenumber(){
-        return this.phoneNumber;
-    }
-    
-    /**
-     * Method that sets the middle initial of a paitent
-     */
-    public void setPhoneNumber(String newPnumber){
-        this.phoneNumber = newPnumber;
-    }
-
-    /**
-     * Method that returns the last name of a patient
-     */
-    public String getLname(){
-        return this.lastName;
-    }
-    /**
-     * Method that sets the last name of a patient
-     */
-    public void setLname(String newLname){
-        this.lastName = newLname;
-    }
-
-    /**
-     * Method that returns the ID of a patient
-     */
-    public String getPatientid(){
-        return this.Patientid;
-    }
-    /**
-     * Method that returns the address of a patient
-     */
-    public String getUsername(){
-        return this.Username;
-    }
-
-    /**
-     * Method that sets the address of a patient
-     */
-    public void setUsername(String newUsername){
-        this.Username = newUsername;
-    }
-
-    /**
-     * Method that returns the email of a patient
-     */
-    public String getEmail(){
-        return this.emailAdd;
-    }
-
-    /**
-     * Method that sets the email of a patient
-     */
-    public void setEmail(String newEmail){
-        this.emailAdd = newEmail;
-    }
-
-    /**
-     * Method that returns the password of a patient
-     */
-    public String getPass(){
-        return this.Password;
-    }
-
-    /**
-     * Method that generates random ID that is length 10 and adds it to a hashset of other IDs
-     */
-    public static String generateId(){
-        Random rand = new Random();
-        String idGen = "";
-        for(int i = 0; i < 10; i++){
-            int newRan = rand.nextInt(10);
-            idGen += Integer.toString(newRan);
-            if(checkId(idGen) && idGen.length() == 10){
-                i = 0;
-                idGen = "";
-            }
-        }
-        patientIds.add(idGen);
-        return idGen;
-    }
-
-    /**
-     * Helper method to generateId, it checks if the ID that was generated 
-     * already exists or starts with a 0 and if so it tells the generateId method to
-     * make another one
-     */
-    public static boolean checkId(String id){
-        return patientIds.contains(id) || id.charAt(0) == '0';
+    @Override
+    public int hashCode() {
+        return patientId.hashCode();
     }
 
     /**
@@ -148,8 +46,8 @@ public class Patient extends User implements Serializable {
      * organized fashion
      */
     public String toString(){
-        return "First name: " + this.firstName +  "\nLast name: " + this.lastName + "\nUsername:" + this.Username
-         + "\nPatient ID: " + this.Patientid + "\nPhone Number: " + this.phoneNumber;
+        return "First name: " + this.Fname +  "\nLast name: " + this.Lname + "\nUsername:" + this.username
+         + "\nPatient ID: " + this.patientId + "\nPhone Number: " + this.phoneNumber;
     }
 
 }
