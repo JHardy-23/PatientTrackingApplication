@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  */
 public class PatientRegistrationGUIController {
 
-    private GUI_Package.GUI_PatientRegistrationPage gui;
+    public GUI_Package.GUI_PatientRegistrationPage gui;
 
     public PatientRegistrationGUIController() {
         gui = new GUI_Package.GUI_PatientRegistrationPage();
@@ -43,7 +43,7 @@ public class PatientRegistrationGUIController {
                             JOptionPane.showMessageDialog(gui.frame, "Successfully registered new patient.", "Success!", JOptionPane.INFORMATION_MESSAGE);
 
                             // Signal main to open Home Page
-                            // ADD CODE
+                            gui.frame.dispose();
                         }
                         catch(Exception ex) {
                             JOptionPane.showMessageDialog(gui.frame, "Failed to register new patient. Please try again.\nError: " + ex.getMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -58,14 +58,16 @@ public class PatientRegistrationGUIController {
                     case 3:
                         JOptionPane.showMessageDialog(gui.frame, "Invalid text entry. Please enter a valid phone number using only numbers.", "ERROR", JOptionPane.ERROR_MESSAGE);
                         break;
+                    case 4:
+                        JOptionPane.showMessageDialog(gui.frame, "Invalid text entries. Passwords do not match.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                        break;
                 }
             }
         });
     }
 
     private int VerifyTextFields() {
-        if( gui.PatientIDTextField.getText().length() == 0 ||
-                gui.UserNameTextField.getText().length() == 0 ||
+        if( gui.UserNameTextField.getText().length() == 0 ||
                 gui.passwordTextField.getText().length() == 0 ||
                 gui.RepeatPasswordTextField.getText().length() == 0 ||
                 gui.EmailTextField.getText().length() == 0 ||
@@ -77,6 +79,8 @@ public class PatientRegistrationGUIController {
             return 2; // Invalid email (does not contain @ sign)
         else if( !gui.PhoneNumberTextField.getText().toUpperCase().equals(gui.PhoneNumberTextField.getText().toLowerCase()) )
             return 3; // Invalid phone number (does not have only numbers)
+        else if(!gui.passwordTextField.getText().equals(gui.RepeatPasswordTextField.getText()))
+            return 4; // Passwords do not match
         return 0; // Valid input
     }
 

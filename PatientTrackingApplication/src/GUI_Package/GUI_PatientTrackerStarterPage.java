@@ -1,6 +1,5 @@
 package GUI_Package;
-import java.awt.EventQueue;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -10,7 +9,7 @@ import javax.swing.JLabel;
 
 public class GUI_PatientTrackerStarterPage {
 
-	private JFrame frame;
+	public JFrame frame;
 
 	/**
 	 * Launch the application.
@@ -67,4 +66,12 @@ public class GUI_PatientTrackerStarterPage {
 		frame.getContentPane().add(RegisterButton);
 	}
 
+	public JButton getButton(String text) {
+		for(Component c : frame.getContentPane().getComponents()) {
+			if( c instanceof JButton && ((JButton) c).getText().equals(text) ) {
+				return (JButton)c;
+			}
+		}
+		return null;
+	}
 }

@@ -52,7 +52,7 @@ public class GUI_DoctorRegistrationPage {
 		frame = new JFrame();
 		frame.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 27));
 		frame.setBounds(100, 100, 800, 650);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		// Starter Page of Application
 		JLabel RegistrationTitleLabel = new JLabel("Doctor Registration");

@@ -11,11 +11,7 @@ import java.io.*;
 
 public class main {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        // CODE TO TEST FILE SAVING
-        /*User.ReadSetFromUserFile();
-        User.AddUser(new Doctor("Justin", "Hardy", "uName", "emailAdd", "String Pass", "String pNumber"));
-        User.AddUser(new Doctor("Test", "2", "uName", "emailAdd", "String Pass", "String pNumber"));
-        User.WriteSetToUserFile();*/
-        GUI_Package.GUI_PatientTrackerStarterPage.main(null);
+        StarterPageGUIController starterPage = new StarterPageGUIController();
+        starterPage.gui.frame.setVisible(true);
     }
 }

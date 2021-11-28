@@ -13,11 +13,11 @@ public class Doctor extends User implements Serializable {
     /**
      * Constructor for the Doctor object
      */
-    public Doctor(String First, String Last, String uName, String emailAdd, String Pass, String pNumber){
+    public Doctor(String First, String Last, String uName, String emailAdd, String Pass, String pNumber, String docId) {
         this.Fname = First;
         this.Lname = Last;
         this.username = uName;
-        this.docId = generateId();
+        this.docId = docId;
         this.phoneNumber = pNumber;
         this.emailAddress = emailAdd;
         this.Password = Pass;

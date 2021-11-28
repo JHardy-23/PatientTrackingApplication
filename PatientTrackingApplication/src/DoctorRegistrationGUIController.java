@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  * @author cmn68
  */
 public class DoctorRegistrationGUIController {
-    private GUI_Package.GUI_DoctorRegistrationPage gui;
+    public GUI_Package.GUI_DoctorRegistrationPage gui;
 
     public DoctorRegistrationGUIController() {
         gui = new GUI_Package.GUI_DoctorRegistrationPage();
@@ -32,7 +32,11 @@ public class DoctorRegistrationGUIController {
                             User.ReadSetFromUserFile();
 
                             // Add new user to users HashSet
-                            User.AddUser(new Doctor(gui.FirstNameTextField.getText(), gui.LastNameTextField.getText(), gui.UserNameTextField.getText(), gui.EmailTextField.getText(), gui.passwordTextField.getText(), gui.PhoneNumberTextField.getText()));
+                            if(User.checkId(gui.DoctorIDTextField.getText(), true)) {
+                                JOptionPane.showMessageDialog(gui.frame, "Failed to register new doctor. The entered Id is not a valid Doctor Id.\n\nThe Id should begin with a 0, and be 12 characters long. Existing IDs will not be accepted.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                                break;
+                            }
+                            User.AddUser(new Doctor(gui.FirstNameTextField.getText(), gui.LastNameTextField.getText(), gui.UserNameTextField.getText(), gui.EmailTextField.getText(), gui.passwordTextField.getText(), gui.PhoneNumberTextField.getText(), gui.DoctorIDTextField.getText()));
 
                             // Write new HashSet to serialized HashSet file
                             User.WriteSetToUserFile();
@@ -40,8 +44,8 @@ public class DoctorRegistrationGUIController {
                             // Display success message
                             JOptionPane.showMessageDialog(gui.frame, "Successfully registered new doctor.", "Success!", JOptionPane.INFORMATION_MESSAGE);
 
-                            // Signal main to open Home Page
-                            // ADD CODE
+                            // Close this window
+                            gui.frame.dispose();
                         }
                         catch(Exception ex) {
                             JOptionPane.showMessageDialog(gui.frame, "Failed to register new doctor. Please try again.", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -54,6 +58,9 @@ public class DoctorRegistrationGUIController {
                         JOptionPane.showMessageDialog(gui.frame, "Incomplete text entries. Please enter a valid email address.", "ERROR", JOptionPane.ERROR_MESSAGE);
                         break;
                     case 3:
+                        JOptionPane.showMessageDialog(gui.frame, "Invalid text entry. Please enter a valid phone number using only numbers.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                        break;
+                    case 4:
                         JOptionPane.showMessageDialog(gui.frame, "Invalid text entry. Please enter a valid phone number using only numbers.", "ERROR", JOptionPane.ERROR_MESSAGE);
                         break;
                 }
@@ -75,17 +82,9 @@ public class DoctorRegistrationGUIController {
             return 2; // Invalid email (does not contain @ sign)
         else if( !gui.PhoneNumberTextField.getText().toUpperCase().equals(gui.PhoneNumberTextField.getText().toLowerCase()) )
             return 3; // Invalid phone number (does not have only numbers)
+        else if(!gui.passwordTextField.getText().equals(gui.RepeatPasswordTextField.getText()))
+            return 4; // Passwords do not match
         return 0; // Valid input
-    }
-
-    private boolean ReadDoctorsFromFile() {
-
-        return true;
-    }
-
-    private boolean WriteDoctorsToFile() {
-
-        return true;
     }
 
     public static void main(String[] args) {

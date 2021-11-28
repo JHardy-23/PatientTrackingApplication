@@ -1,6 +1,5 @@
 package GUI_Package;
-import java.awt.EventQueue;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,9 +12,9 @@ import javax.swing.JPasswordField;
 
 public class GUI_PatientTrackerLoginPage {
 
-	private JFrame frame;
-	private JTextField UsernameTextField;
-	private JPasswordField passwordTextField;
+	public JFrame frame;
+	public JTextField UsernameTextField;
+	public JPasswordField passwordTextField;
 
 	/**
 	 * Launch the application.
@@ -47,7 +46,7 @@ public class GUI_PatientTrackerLoginPage {
 		frame = new JFrame();
 		frame.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 27));
 		frame.setBounds(100, 100, 800, 650);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		// Starter Page of Application
 		JLabel HomepageTitle = new JLabel("Patient Tracker");
@@ -93,4 +92,12 @@ public class GUI_PatientTrackerLoginPage {
 		frame.getContentPane().add(Login_RegisterButton);
 	}
 
+	public JButton getButton(String text) {
+		for(Component c : frame.getContentPane().getComponents()) {
+			if( c instanceof JButton && ((JButton) c).getText().equals(text) ) {
+				return (JButton)c;
+			}
+		}
+		return null;
+	}
 }

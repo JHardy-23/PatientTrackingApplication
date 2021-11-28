@@ -91,7 +91,7 @@ public abstract class User implements Serializable {
         for(int i = 0; i < 12; i++){
             int newRan = rand.nextInt(10);
             idGen += Integer.toString(newRan);
-            if(checkId(idGen) && idGen.length() == 12){
+            if(checkId(idGen, false) && idGen.length() == 12){
                 i = 0;
                 idGen = "";
             }
@@ -104,8 +104,8 @@ public abstract class User implements Serializable {
      * a newly generated doctor's ID and that it doesn't start with zero.
      * Returns true if the ID is not valid, and false if it is.
      */
-    public static boolean checkId(String id){
-        return ids.contains(id) || id.charAt(0) == '0';
+    public static boolean checkId(String id, boolean isDoctor){
+        return ids.contains(id) || (id.charAt(0) == '0' && !isDoctor) || id.length() != 12;
     }
 
     /**
