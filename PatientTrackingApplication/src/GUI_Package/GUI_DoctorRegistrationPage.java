@@ -70,21 +70,21 @@ public class GUI_DoctorRegistrationPage {
 		DoctorIDTextField.setColumns(10);
 		
 		JLabel LastNameLabel = new JLabel("Last Name");
-		LastNameLabel.setBounds(441, 81, 155, 35);
+		LastNameLabel.setBounds(450, 81, 155, 35);
 		frame.getContentPane().add(LastNameLabel);
 		
 		LastNameTextField = new JTextField();
-		LastNameTextField.setBounds(441, 119, 236, 39);
+		LastNameTextField.setBounds(455, 119, 236, 39);
 		frame.getContentPane().add(LastNameTextField);
 		LastNameTextField.setColumns(10);
 		
 		JLabel FirstNameLabel = new JLabel("First Name");
-		FirstNameLabel.setBounds(195, 81, 155, 35);
+		FirstNameLabel.setBounds(203, 81, 155, 35);
 		frame.getContentPane().add(FirstNameLabel);
 		
 		FirstNameTextField = new JTextField();
 		FirstNameTextField.setColumns(10);
-		FirstNameTextField.setBounds(195, 119, 236, 39);
+		FirstNameTextField.setBounds(205, 119, 236, 39);
 		frame.getContentPane().add(FirstNameTextField);
 		
 		JLabel PhoneNumberLabel = new JLabel("Phone Number");
