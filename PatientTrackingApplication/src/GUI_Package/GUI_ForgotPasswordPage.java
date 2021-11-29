@@ -1,18 +1,17 @@
 package GUI_Package;
 
-import java.awt.EventQueue;
+import java.awt.*;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
 public class GUI_ForgotPasswordPage {
 
-	private JFrame frame;
-	private JTextField emailAddresstextField;
+	public JFrame frame;
+	public JTextField emailAddresstextField;
 
 	/**
 	 * Launch the application.
@@ -43,7 +42,7 @@ public class GUI_ForgotPasswordPage {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 1142, 420);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel ForgotPassTitleLabel = new JLabel("Forgot Password?");
@@ -67,9 +66,17 @@ public class GUI_ForgotPasswordPage {
 		lblNewLabel_2.setBounds(322, 126, 185, 33);
 		frame.getContentPane().add(lblNewLabel_2);
 		
-		JButton submitButton = new JButton("Submit ");
+		JButton submitButton = new JButton("Submit");
 		submitButton.setBounds(454, 235, 171, 41);
 		frame.getContentPane().add(submitButton);
 	}
 
+	public JButton getButton(String text) {
+		for(Component c : frame.getContentPane().getComponents()) {
+			if( c instanceof JButton && ((JButton) c).getText().equals(text) ) {
+				return (JButton)c;
+			}
+		}
+		return null;
+	}
 }

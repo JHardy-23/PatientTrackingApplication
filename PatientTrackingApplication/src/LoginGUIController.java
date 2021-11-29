@@ -76,7 +76,17 @@ public class LoginGUIController {
     }
 
     public void OpenForgotPasswordDialog() {
-        // Add code to change password using dialogs (JUSTIN WILL CODE THIS PART)
+        ForgotPasswordGUIController fPController = new ForgotPasswordGUIController();
+        fPController.gui.frame.setLocation(gui.frame.getLocation()); // Move gui's location on screen to the starter page's location
+        fPController.gui.frame.setVisible(true);
+        gui.frame.setVisible(false);
+        // Show this window again after the new window has closed.
+        fPController.gui.frame.addWindowListener(new PatientTrackerWindowListener() {
+            public void windowClosed(WindowEvent event) {
+                gui.frame.setVisible(true);
+                gui.frame.setLocation(fPController.gui.frame.getLocation()); // Move gui's location to new GUI's location
+            }
+        });
     }
 
     public void AttemptLogin() {

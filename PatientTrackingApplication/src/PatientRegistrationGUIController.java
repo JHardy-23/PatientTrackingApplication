@@ -27,6 +27,7 @@ public class PatientRegistrationGUIController {
         gui.getRegisterButton().addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 int verifyResult = VerifyTextFields();
+                String message = "Invalid text entry.\n\n";
                 switch(verifyResult) {
                     case 0:
                         try {
@@ -59,7 +60,13 @@ public class PatientRegistrationGUIController {
                         JOptionPane.showMessageDialog(gui.frame, "Invalid text entry. Please enter a valid phone number using only numbers.", "ERROR", JOptionPane.ERROR_MESSAGE);
                         break;
                     case 4:
+                        JOptionPane.showMessageDialog(gui.frame, "Invalid text entry. Please enter a valid phone number that is 10 digits long.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                        break;
+                    case 5:
                         JOptionPane.showMessageDialog(gui.frame, "Invalid text entries. Passwords do not match.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                        break;
+                    case 6:
+                        JOptionPane.showMessageDialog(gui.frame, "Invalid text entry. Password must be between 8 and 16 characters in length.", "ERROR", JOptionPane.ERROR_MESSAGE);
                         break;
                 }
             }
@@ -79,8 +86,12 @@ public class PatientRegistrationGUIController {
             return 2; // Invalid email (does not contain @ sign)
         else if( !gui.PhoneNumberTextField.getText().toUpperCase().equals(gui.PhoneNumberTextField.getText().toLowerCase()) )
             return 3; // Invalid phone number (does not have only numbers)
-        else if(!gui.passwordTextField.getText().equals(gui.RepeatPasswordTextField.getText()))
-            return 4; // Passwords do not match
+        else if( gui.PhoneNumberTextField.getText().length() != 10 )
+            return 4; // Invalid phone number (not correct length)
+        else if( !gui.passwordTextField.getText().equals(gui.RepeatPasswordTextField.getText()) )
+            return 5; // Passwords do not match
+        else if( gui.passwordTextField.getText().length() < 8 || gui.passwordTextField.getText().length() > 16 )
+            return 6; // Password is not of correct length
         return 0; // Valid input
     }
 
