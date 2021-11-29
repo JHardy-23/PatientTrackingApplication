@@ -1,26 +1,21 @@
 package GUI_Package;
 
-import java.awt.EventQueue;
-import java.awt.Font;
+import java.awt.*;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class GUI_PatientAppointmentsPage {
 
-	private JFrame frame;
-	private JTextField dateTextField;
-	private JTextField lastNameTextField;
-	private JTextField firstNameTextField;
-	private JTextField startTimeTextField;
-	private JTextField endTimeTextField;
+	public JFrame frame;
+	public JTextField dateTextField;
+	public JTextField lastNameTextField;
+	public JTextField firstNameTextField;
+	public JTextField startTimeTextField;
+	public JTextField endTimeTextField;
 	DefaultTableModel model;
-	private JTable DoctorsList;
+	public JTable AppointmentsList;
+	public JScrollPane scrollPane;
 
 	/**
 	 * Launch the application.
@@ -52,7 +47,7 @@ public class GUI_PatientAppointmentsPage {
 		frame = new JFrame();
 		frame.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 27));
 		frame.setBounds(100, 100, 800, 650);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
@@ -119,10 +114,21 @@ public class GUI_PatientAppointmentsPage {
 		requestButton.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		requestButton.setBounds(14, 397, 296, 41);
 		panel.add(requestButton);
-		
-		DoctorsList = new JTable();
-		DoctorsList.setBounds(338, 92, 404, 442);
-		panel.add(DoctorsList);
+
+		AppointmentsList = new JTable();
+		AppointmentsList.setBounds(338, 92, 404, 442);
+		scrollPane = new JScrollPane(AppointmentsList);
+		scrollPane.setBounds(AppointmentsList.getX(), AppointmentsList.getY(), AppointmentsList.getWidth(), AppointmentsList.getHeight());
+		panel.add(scrollPane);
 	}
 
+	public JButton getButton(String text) {
+		JPanel panel = (JPanel) frame.getContentPane().getComponent(0);
+		for(Component c : panel.getComponents()) {
+			if( c instanceof JButton && ((JButton) c).getText().equals(text) ) {
+				return (JButton)c;
+			}
+		}
+		return null;
+	}
 }

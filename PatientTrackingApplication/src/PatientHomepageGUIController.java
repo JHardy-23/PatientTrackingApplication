@@ -56,6 +56,22 @@ public class PatientHomepageGUIController {
             }
         });
 
+        gui.getButton("Appointments").addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                PatientAppointmentsGUIController pAController = new PatientAppointmentsGUIController(account);
+                pAController.gui.frame.setLocation(gui.frame.getLocation()); // Move gui's location on screen to the starter page's location
+                pAController.gui.frame.setVisible(true);
+                gui.frame.setVisible(false);
+                // Show this window again after the new window has closed.
+                pAController.gui.frame.addWindowListener(new PatientTrackerWindowListener() {
+                    public void windowClosed(WindowEvent event) {
+                        gui.frame.setVisible(true);
+                        gui.frame.setLocation(pAController.gui.frame.getLocation()); // Move gui's location to new GUI's location
+                    }
+                });
+            }
+        });
+
         gui.getButton("Sign Out").addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gui.frame.dispose();
