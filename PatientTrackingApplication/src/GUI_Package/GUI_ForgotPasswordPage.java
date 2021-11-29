@@ -12,7 +12,7 @@ import javax.swing.JButton;
 public class GUI_ForgotPasswordPage {
 
 	private JFrame frame;
-	private JTextField emailAddresstextField;
+	private JTextField emailAddressTextField;
 
 	/**
 	 * Launch the application.
@@ -58,18 +58,17 @@ public class GUI_ForgotPasswordPage {
 		informationLabel.setBounds(26, 85, 1058, 40);
 		frame.getContentPane().add(informationLabel);
 		
-		emailAddresstextField = new JTextField();
-		emailAddresstextField.setBounds(322, 168, 429, 39);
-		frame.getContentPane().add(emailAddresstextField);
-		emailAddresstextField.setColumns(10);
+		emailAddressTextField = new JTextField();
+		emailAddressTextField.setBounds(322, 168, 429, 39);
+		frame.getContentPane().add(emailAddressTextField);
+		emailAddressTextField.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("Email Address");
-		lblNewLabel_2.setBounds(322, 126, 185, 33);
-		frame.getContentPane().add(lblNewLabel_2);
+		JLabel emailAddressLabel = new JLabel("Email Address");
+		emailAddressLabel.setBounds(322, 126, 185, 33);
+		frame.getContentPane().add(emailAddressLabel);
 		
 		JButton submitButton = new JButton("Submit ");
 		submitButton.setBounds(454, 235, 171, 41);
 		frame.getContentPane().add(submitButton);
 	}
-
 }
