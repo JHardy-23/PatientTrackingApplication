@@ -9,7 +9,6 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -17,14 +16,14 @@ import java.time.format.DateTimeFormatter;
  *
  * @author cmn68
  */
-public class DoctorAppointmentsGUIController {
-    public GUI_Package.GUI_DoctorAppointmentsPage gui;
-    private Doctor account;
+public class PatientAppointmentsGUIController {
+    public GUI_Package.GUI_PatientAppointmentsPage gui;
+    private Patient account;
 
-    public DoctorAppointmentsGUIController( Doctor account ) {
-        gui = new GUI_Package.GUI_DoctorAppointmentsPage();
+    public PatientAppointmentsGUIController( Patient account ) {
+        gui = new GUI_Package.GUI_PatientAppointmentsPage();
         this.account = account;
-        gui.getButton("Create New Appointment").addActionListener(new ActionListener() {
+        gui.getButton("Request New Appointment").addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 CreateAppointment();
             }
@@ -42,8 +41,8 @@ public class DoctorAppointmentsGUIController {
         }
 
         // Check if name matches to a patient from their list of patients.
-        Patient patient = GetPatient();
-        if( patient == null )
+        Doctor doctor = GetDoctor();
+        if( doctor == null )
             return;
 
         // Check if date and doesn't contain letters and is valid length
@@ -104,7 +103,7 @@ public class DoctorAppointmentsGUIController {
         }
 
         // Time frame is valid. Now check if the time frame does not conflict with another appointment.
-        Appointment newAppointment = new Appointment(startPeriod.equals("PM") ? startHour + 12 : startHour, startMinutes, endPeriod.equals("PM") ? endHour + 12 : endHour, endMinutes, date, account.getID(), patient.getID());
+        Appointment newAppointment = new Appointment(startPeriod.equals("PM") ? startHour + 12 : startHour, startMinutes, endPeriod.equals("PM") ? endHour + 12 : endHour, endMinutes, date, account.getID(), doctor.getID());
         for( Appointment a : account.getAppointments() ) {
             if( a.conflictsWith(newAppointment) ) {
                 JOptionPane.showMessageDialog(gui.frame, "Unfortunately, the appointment specified conflicts with another appointment\nPlease refer to appointments list to correct this conflict.", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -112,37 +111,27 @@ public class DoctorAppointmentsGUIController {
             }
         }
 
-        // Everything validated; add appointment.
-        account.addAppointment(newAppointment);
-        patient.addAppointment(newAppointment);
+        // Everything validated; send appointment request
+        /**
+         * Due to time constraints, this functionality is not available.
+         */
 
-        JOptionPane.showMessageDialog(gui.frame, "Successfully created an appointment with " + patient.getFirstName() + " " + patient.getLname() + ".", "Success!", JOptionPane.INFORMATION_MESSAGE);
-
-        // Write changes to file.
-        try {
-            User.WriteSetToUserFile();
-        }
-        catch (Exception e) {
-            System.out.println("Failed to write to users file.");
-        }
-
-        // Update Appointments List
-        UpdateList();
+        JOptionPane.showMessageDialog(gui.frame, "Successfully sent a request for an appointment with " + doctor.getFirstName() + " " + doctor.getLname() + ".", "Success!", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    private Patient GetPatient() {
-        String patients = "";
-        for( String id : account.getPatientIds() ) {
+    private Doctor GetDoctor() {
+        String doctors = "";
+        for( String id : account.getDoctorIds() ) {
             for( User u : User.users ) {
                 if( u.getID().equals(id) ) {
-                    patients += "• " + u.getFirstName() + " " + u.getLname() + "\n";
+                    doctors += "• " + u.getFirstName() + " " + u.getLname() + "\n";
                     if( u.getFirstName().equalsIgnoreCase(gui.firstNameTextField.getText()) && u.getLname().equalsIgnoreCase(gui.lastNameTextField.getText()) ) {
-                        return (Patient)u;
+                        return (Doctor)u;
                     }
                 }
             }
         }
-        JOptionPane.showMessageDialog(gui.frame, "Invalid text entry. The patient, " + gui.firstNameTextField.getText() + " " + gui.lastNameTextField.getText() + ", does not exist\nList of patients:\n" + patients, "ERROR", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(gui.frame, "Invalid text entry. Dr. " + gui.lastNameTextField.getText() + ", does not exist\nList of doctors:\n" + doctors, "ERROR", JOptionPane.ERROR_MESSAGE);
         return null;
     }
 
@@ -153,11 +142,11 @@ public class DoctorAppointmentsGUIController {
                 return false;
             }
         };
-        model.setColumnIdentifiers(new Object[] {"Start Time", "End Time", "Date", "Patient"});
+        model.setColumnIdentifiers(new Object[] {"Start Time", "End Time", "Date", "Doctor"});
 
         // Add appointments to list
         for( Appointment a : account.getAppointments() ) {
-            model.addRow(new Object[] {a.getStartTime().format(DateTimeFormatter.ofPattern("hh:mm:ss a", java.util.Locale.ENGLISH)), a.getEndTime().format(DateTimeFormatter.ofPattern("hh:mm:ss a", java.util.Locale.ENGLISH)), a.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy", java.util.Locale.ENGLISH)), a.getPatientName()});
+            model.addRow(new Object[] {a.getStartTime().format(DateTimeFormatter.ofPattern("hh:mm:ss a", java.util.Locale.ENGLISH)), a.getEndTime().format(DateTimeFormatter.ofPattern("hh:mm:ss a", java.util.Locale.ENGLISH)), a.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy", java.util.Locale.ENGLISH)), a.getDoctorName()});
         }
 
         // Set model to the new table model
