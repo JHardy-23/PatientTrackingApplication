@@ -9,6 +9,8 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.JOptionPane;
 
@@ -42,11 +44,27 @@ public class StarterPageGUIController {
                 PatientRegistrationGUIController pController = new PatientRegistrationGUIController();
                 pController.gui.frame.setLocation(gui.frame.getLocation()); // Move gui's location on screen to the starter page's location
                 pController.gui.frame.setVisible(true);
+                gui.frame.setVisible(false);
+                // Show this window again after the new window has closed.
+                pController.gui.frame.addWindowListener(new PatientTrackerWindowListener() {
+                    public void windowClosed(WindowEvent event) {
+                        gui.frame.setVisible(true);
+                        gui.frame.setLocation(pController.gui.frame.getLocation()); // Move gui's location to new GUI's location
+                    }
+                });
                 break;
             case 1:
                 DoctorRegistrationGUIController dController = new DoctorRegistrationGUIController();
                 dController.gui.frame.setLocation(gui.frame.getLocation()); // Move gui's location on screen to the starter page's location
                 dController.gui.frame.setVisible(true);
+                gui.frame.setVisible(false);
+                // Show this window again after the new window has closed.
+                dController.gui.frame.addWindowListener(new PatientTrackerWindowListener() {
+                    public void windowClosed(WindowEvent event) {
+                        gui.frame.setVisible(true);
+                        gui.frame.setLocation(dController.gui.frame.getLocation()); // Move gui's location to new GUI's location
+                    }
+                });
                 break;
             default:
                 return;
@@ -57,5 +75,13 @@ public class StarterPageGUIController {
         LoginGUIController lController = new LoginGUIController();
         lController.gui.frame.setLocation(gui.frame.getLocation()); // Move gui's location on screen to the starter page's location
         lController.gui.frame.setVisible(true);
+        gui.frame.setVisible(false);
+        // Show this window again after the new window has closed.
+        lController.gui.frame.addWindowListener(new PatientTrackerWindowListener() {
+            public void windowClosed(WindowEvent event) {
+                gui.frame.setVisible(true);
+                gui.frame.setLocation(lController.gui.frame.getLocation()); // Move gui's location to new GUI's location
+            }
+        });
     }
 }
