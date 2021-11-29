@@ -25,6 +25,21 @@ public class PatientHomepageGUIController {
     public PatientHomepageGUIController(Patient account) {
         gui = new GUI_Package.GUI_PatientHomepage();
         this.account = account;
+        gui.getButton("Doctors").addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                PatientDoctorsListGUIController dLController = new PatientDoctorsListGUIController(account);
+                dLController.gui.frame.setLocation(gui.frame.getLocation()); // Move gui's location on screen to the starter page's location
+                dLController.gui.frame.setVisible(true);
+                gui.frame.setVisible(false);
+                // Show this window again after the new window has closed.
+                dLController.gui.frame.addWindowListener(new PatientTrackerWindowListener() {
+                    public void windowClosed(WindowEvent event) {
+                        gui.frame.setVisible(true);
+                        gui.frame.setLocation(dLController.gui.frame.getLocation()); // Move gui's location to new GUI's location
+                    }
+                });
+            }
+        });
         gui.getButton("Sign Out").addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gui.frame.dispose();

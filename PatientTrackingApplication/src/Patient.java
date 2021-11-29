@@ -1,6 +1,7 @@
 import java.util.HashSet;
 import java.util.Random;
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  * The patient class represents patients that go to the docotrs office, each patient
@@ -8,6 +9,7 @@ import java.io.*;
  */
 public class Patient extends User implements Serializable {
     private String patientId;
+    private ArrayList<String> doctorIds;
 
     /**
      * Constructor for the patient class
@@ -20,6 +22,7 @@ public class Patient extends User implements Serializable {
         this.phoneNumber = phoneNumber;
         this.Password = password;
         this.emailAddress = emailAddress;
+        this.doctorIds = new ArrayList<String>();
     }
 
     /**
@@ -29,11 +32,33 @@ public class Patient extends User implements Serializable {
         this.Fname = Fname;
         this.Lname = Lname;
         this.patientId = generateId();
+        this.doctorIds = new ArrayList<String>();
     }
 
 
     public String getID() {
         return patientId;
+    }
+
+    public ArrayList<String> getDoctorIds() {
+        return doctorIds;
+    }
+
+    public boolean addDoctor( String id ) {
+        // Check if ID for doctor exists, or if doctor already is associated
+        if( ids.contains(id) && !doctorIds.contains(id) ) {
+            // Search for doctor with that id
+            for( User u : users ) {
+                if( u.getID().equals(id) ) {
+                    // Add doctor id to list
+                    doctorIds.add(id);
+                    return true;
+                }
+            }
+        }
+
+        // ID does not exist, or doctor is already associated
+        return false;
     }
 
     @Override
@@ -46,8 +71,11 @@ public class Patient extends User implements Serializable {
      * organized fashion
      */
     public String toString(){
-        return "First name: " + this.Fname +  "\nLast name: " + this.Lname + "\nUsername:" + this.username
-         + "\nPatient ID: " + this.patientId + "\nPhone Number: " + this.phoneNumber;
+        String toString = "First name: " + this.Fname +  "\nLast name: " + this.Lname + "\nUsername: " + this.username
+         + "\nPatient ID: " + this.patientId + "\nPhone Number: " + this.phoneNumber + "\nAssociated Doctor Ids: ";
+        for( String id : doctorIds)
+            toString += id + " ";
+        return toString;
     }
 
 }
