@@ -14,11 +14,6 @@ import java.awt.event.WindowListener;
 
 import javax.swing.JOptionPane;
 
-/**
- * FXML Controller class
- *
- * @author cmn68
- */
 public class StarterPageGUIController {
     public GUI_Package.GUI_PatientTrackerStarterPage gui;
 
@@ -38,7 +33,7 @@ public class StarterPageGUIController {
 
     private void OpenRegistrationGUI() {
         Object[] options = {"Patient", "Doctor", "Nevermind"};
-        int choice = JOptionPane.showOptionDialog(gui.frame, "Which new type of user would you are you?", "Select User Type", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,options, options[2]);
+        int choice = JOptionPane.showOptionDialog(gui.frame, "Which new type of user are you?", "Select User Type", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null,options, options[2]);
         switch (choice) {
             case 0:
                 PatientRegistrationGUIController pController = new PatientRegistrationGUIController();
