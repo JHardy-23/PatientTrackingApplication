@@ -17,15 +17,21 @@ public class PatientInformationGUIController{
         this.account = account;
         updatefName(account.getFirstName());
         updatelName(account.getLname());
+        updateDOB(account.getDateOfBirth());
+        updateMedhist(account.getMedicalHistory());
         
 
         gui.getButton("Click here for Doctors").addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
-                String docIDs = "";
+                String doctorNames = "";
                 for(String id: account.getDoctorIds()){
-                    docIDs += id + "\n";
+                    for( User u : User.users ) {
+                        if(u.getID().equals(id)) {
+                            doctorNames += "• Dr. " + u.getFirstName() + " " + u.getLname() + "\n";
+                        }
+                    }
                 }
-                JOptionPane.showMessageDialog(gui.frame, docIDs, "Doctor IDs", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(gui.frame, doctorNames, "Doctors", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
@@ -49,6 +55,7 @@ public class PatientInformationGUIController{
                     case 2:
                         String z = (String)JOptionPane.showInputDialog(gui.frame, "Please Update your medical record (This will delete everything else): ", 
                         "Customized Dialog", JOptionPane.PLAIN_MESSAGE, null, null, null);
+                        account.setMedicalHistory(z);
                         updateMedhist(z);
                         break;
                     case 3:
@@ -69,6 +76,7 @@ public class PatientInformationGUIController{
                             while(true){
                                 if(date.length() == 10 && date.charAt(2) == '/' && date.charAt(5) == '/' && day > 0 && day < 32 && month > 0 && month < 13 && year > 1899 && year < 2022){
                                     updateDOB(date);
+                                    account.setDateOfBirth(date);
                                     break;
                                 }
                                 else{
@@ -84,17 +92,30 @@ public class PatientInformationGUIController{
 
     public void updatefName(String fname){
         gui.firstNameTextField.setText(account.getFirstName());
+        WriteChangesToFile();
     }
 
     public void updatelName(String lname){
         gui.lastNameTextField.setText(account.getLname());
+        WriteChangesToFile();
     }
 
     public void updateMedhist(String hist){
         gui.textField.setText(hist);
+        WriteChangesToFile();
     }
 
     public void updateDOB(String newDOB){
         gui.DOBTextField.setText(newDOB);
+        WriteChangesToFile();
+    }
+
+    private void WriteChangesToFile() {
+        try {
+            User.WriteSetToUserFile();
+        }
+        catch(Exception e) {
+            System.out.println("ERROR writing changes to users file.");
+        }
     }
 }

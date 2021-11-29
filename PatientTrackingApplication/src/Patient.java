@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * will have their own ID and Password which are added to a hashset
  */
 public class Patient extends User implements Serializable {
-    private String patientId;
+    private String patientId, dateOfBirth, medicalHistory;
     private ArrayList<String> doctorIds;
 
     /**
@@ -24,6 +24,8 @@ public class Patient extends User implements Serializable {
         this.emailAddress = emailAddress;
         this.doctorIds = new ArrayList<String>();
         this.appointments = new ArrayList<Appointment>();
+        this.dateOfBirth = "";
+        this.medicalHistory = "";
     }
 
     /**
@@ -35,6 +37,8 @@ public class Patient extends User implements Serializable {
         this.patientId = generateId();
         this.doctorIds = new ArrayList<String>();
         this.appointments = new ArrayList<Appointment>();
+        this.dateOfBirth = "";
+        this.medicalHistory = "";
     }
 
 
@@ -44,6 +48,22 @@ public class Patient extends User implements Serializable {
 
     public ArrayList<String> getDoctorIds() {
         return doctorIds;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getMedicalHistory() {
+        return medicalHistory;
+    }
+
+    public void setMedicalHistory(String medicalHistory) {
+        this.medicalHistory = medicalHistory;
     }
 
     public boolean addDoctor( String id ) {
