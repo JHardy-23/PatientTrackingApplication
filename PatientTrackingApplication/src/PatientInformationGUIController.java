@@ -13,7 +13,6 @@ public class PatientInformationGUIController{
 
     public PatientInformationGUIController(Patient account){
         gui = new GUI_Package.GUI_PatientInformationPage();
-        gui.textField.setEditable(true);
         this.account = account;
         updatefName(account.getFirstName());
         updatelName(account.getLname());
@@ -53,10 +52,12 @@ public class PatientInformationGUIController{
                         updatelName(y);
                         break;
                     case 2:
+                        gui.textField.setEditable(true);
                         String z = (String)JOptionPane.showInputDialog(gui.frame, "Please Update your medical record (This will delete everything else): ", 
                         "Customized Dialog", JOptionPane.PLAIN_MESSAGE, null, null, null);
                         account.setMedicalHistory(z);
                         updateMedhist(z);
+                        gui.textField.setEditable(false);
                         break;
                     case 3:
                             String date = (String)JOptionPane.showInputDialog(gui.frame, "Please enter your date of birth\n Must be in the format MM/DD/YYYY", 
