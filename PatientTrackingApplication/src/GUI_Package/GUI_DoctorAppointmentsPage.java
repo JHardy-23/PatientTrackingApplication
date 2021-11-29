@@ -1,30 +1,23 @@
 package GUI_Package;
 
-import java.awt.EventQueue;
-import java.awt.Font;
+import java.awt.*;
 
-import javax.swing.JFrame;
-import javax.swing.JTable;
-import java.awt.Color;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class GUI_DoctorAppointmentsPage {
 
-	private JFrame frame;
-	private JTextField dateTextField;
-	private JTextField lastNameTextField;
-	private JTextField firstNameTextField;
-	private JTextField startTimeTextField;
-	private JTextField endTimeTextField;
+	public JFrame frame;
+	public JTextField dateTextField;
+	public JTextField lastNameTextField;
+	public JTextField firstNameTextField;
+	public JTextField startTimeTextField;
+	public JTextField endTimeTextField;
 	DefaultTableModel model;
-	private JTable PatientsList;
+	public JTable AppointmentsList;
+	public JScrollPane scrollPane;
 
 	/**
 	 * Launch the application.
@@ -127,12 +120,24 @@ public class GUI_DoctorAppointmentsPage {
 		requestButton.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		requestButton.setBounds(14, 397, 296, 41);
 		panel.add(requestButton);
-		
-		PatientsList = new JTable();
-		PatientsList.setBounds(326, 92, 416, 442);
-		panel.add(PatientsList);
+
+		AppointmentsList = new JTable();
+		AppointmentsList.setBounds(326, 92, 416, 442);
+		scrollPane = new JScrollPane(AppointmentsList);
+		scrollPane.setBounds(AppointmentsList.getX(), AppointmentsList.getY(), AppointmentsList.getWidth(), AppointmentsList.getHeight());
+		panel.add(scrollPane);
 		frame.setBounds(100, 100, 800, 650);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
+	}
+
+	public JButton getButton(String text) {
+		JPanel panel = (JPanel) frame.getContentPane().getComponent(0);
+		for(Component c : panel.getComponents()) {
+			if( c instanceof JButton && ((JButton) c).getText().equals(text) ) {
+				return (JButton)c;
+			}
+		}
+		return null;
 	}
 }

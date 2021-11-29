@@ -23,6 +23,7 @@ public class Patient extends User implements Serializable {
         this.Password = password;
         this.emailAddress = emailAddress;
         this.doctorIds = new ArrayList<String>();
+        this.appointments = new ArrayList<Appointment>();
     }
 
     /**
@@ -33,6 +34,7 @@ public class Patient extends User implements Serializable {
         this.Lname = Lname;
         this.patientId = generateId();
         this.doctorIds = new ArrayList<String>();
+        this.appointments = new ArrayList<Appointment>();
     }
 
 

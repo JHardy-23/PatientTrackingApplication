@@ -24,6 +24,7 @@ public class Doctor extends User implements Serializable {
         this.emailAddress = emailAdd;
         this.Password = Pass;
         this.patientIds = new ArrayList<String>();
+        this.appointments = new ArrayList<Appointment>();
     }
 
     public String getID() {

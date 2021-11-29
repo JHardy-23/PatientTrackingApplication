@@ -1,9 +1,11 @@
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.io.*;
 import java.util.Random;
 
 public abstract class User implements Serializable {
     protected String Fname, Lname, Address, emailAddress, phoneNumber, username, Password;
+    protected ArrayList<Appointment> appointments;
     public static HashSet<User> users = new HashSet<User>();
     public static HashSet<String> ids = new HashSet<String>();
     private static final String UsersFileName = "users.ser";
@@ -183,6 +185,18 @@ public abstract class User implements Serializable {
      */
     public String getEmail(){
         return this.emailAddress;
+    }
+
+    public ArrayList<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public boolean addAppointment( Appointment a ) {
+        if( !appointments.contains(a) ) {
+            appointments.add(a);
+            return true;
+        }
+        return false;
     }
 
     /**
