@@ -74,9 +74,9 @@ public class Patient extends User implements Serializable {
      */
     public String toString(){
         String toString = "First name: " + this.Fname +  "\nLast name: " + this.Lname + "\nUsername: " + this.username
-         + "\nPatient ID: " + this.patientId + "\nPhone Number: " + this.phoneNumber + "\nAssociated Doctor Ids: ";
+         + "\nPatient ID: " + this.patientId + "\nPhone Number: " + this.phoneNumber + "\nAssociated Doctor Ids: \n";
         for( String id : doctorIds)
-            toString += id + " ";
+            toString += id + "\n ";
         return toString;
     }
 
