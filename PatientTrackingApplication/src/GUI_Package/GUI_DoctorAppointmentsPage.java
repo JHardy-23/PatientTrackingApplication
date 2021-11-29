@@ -140,4 +140,8 @@ public class GUI_DoctorAppointmentsPage {
 		}
 		return null;
 	}
+
+	public JTable getTable() {
+		return AppointmentsList;
+	}
 }

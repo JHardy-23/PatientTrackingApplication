@@ -9,6 +9,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -26,6 +27,19 @@ public class PatientAppointmentsGUIController {
         gui.getButton("Request New Appointment").addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 CreateAppointment();
+            }
+        });
+        gui.getTable().addMouseListener(new PatientTrackerMouseListener() {
+            public void mouseClicked(MouseEvent e) {
+                int row = gui.getTable().rowAtPoint(e.getPoint());
+                String dName = "", details = "";
+                for( int i = 0; i < account.appointments.size(); i++ ) {
+                    if (i == row) {
+                        dName = account.appointments.get(i).getDoctorName();
+                        details = account.appointments.get(i).getDetails();
+                    }
+                }
+                JOptionPane.showMessageDialog(gui.frame,  "Appointment Details:\n" + (details.isEmpty() ? "Reason for appointment not specified." : details), "Appointment with Dr. " + dName, JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
@@ -146,7 +160,7 @@ public class PatientAppointmentsGUIController {
 
         // Add appointments to list
         for( Appointment a : account.getAppointments() ) {
-            model.addRow(new Object[] {a.getStartTime().format(DateTimeFormatter.ofPattern("hh:mm:ss a", java.util.Locale.ENGLISH)), a.getEndTime().format(DateTimeFormatter.ofPattern("hh:mm:ss a", java.util.Locale.ENGLISH)), a.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy", java.util.Locale.ENGLISH)), a.getDoctorName()});
+            model.addRow(new Object[] {a.getStartTime().format(DateTimeFormatter.ofPattern("hh:mm:ss a", java.util.Locale.ENGLISH)), a.getEndTime().format(DateTimeFormatter.ofPattern("hh:mm:ss a", java.util.Locale.ENGLISH)), a.getDate().format(DateTimeFormatter.ofPattern("MM/dd/yyyy", java.util.Locale.ENGLISH)), a.getDoctorName()});
         }
 
         // Set model to the new table model

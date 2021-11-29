@@ -6,13 +6,14 @@ import java.util.Arrays;
 
 public class Appointment implements Serializable {
     private LocalDateTime start, end;
-    private String patientId, doctorId;
+    private String patientId, doctorId, details;
 
     public Appointment(int startHour, int startMinute, int endHour, int endMinute, String date, String doctorId, String patientId) {
         this.start = GetLocalDateTime(startHour, startMinute, date);
         this.end = GetLocalDateTime(endHour, endMinute, date);
         this.patientId = patientId;
         this.doctorId = doctorId;
+        this.details = "";
     }
 
     private LocalDateTime GetLocalDateTime(int h, int m, String d) {
@@ -67,6 +68,14 @@ public class Appointment implements Serializable {
             }
         }
         return null;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
+    public void setDetails( String details ) {
+        this.details = details;
     }
 
     public String getDoctorName() {

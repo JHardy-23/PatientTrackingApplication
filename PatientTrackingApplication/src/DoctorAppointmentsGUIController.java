@@ -9,8 +9,11 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.text.ParseException;
 import java.time.format.DateTimeFormatter;
+import javax.swing.JOptionPane;
 
 /**
  * FXML Controller class
@@ -27,6 +30,19 @@ public class DoctorAppointmentsGUIController {
         gui.getButton("Create New Appointment").addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 CreateAppointment();
+            }
+        });
+        gui.getTable().addMouseListener(new PatientTrackerMouseListener() {
+            public void mouseClicked(MouseEvent e) {
+                int row = gui.getTable().rowAtPoint(e.getPoint());
+                String pName = "", details = "";
+                for( int i = 0; i < account.appointments.size(); i++ ) {
+                    if (i == row) {
+                        pName = account.appointments.get(i).getPatientName();
+                        details = account.appointments.get(i).getDetails();
+                    }
+                }
+                JOptionPane.showMessageDialog(gui.frame,  "Appointment Details:\n" + (details.isEmpty() ? "Reason for appointment not specified." : details), "Appointment with " + pName, JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
@@ -112,6 +128,12 @@ public class DoctorAppointmentsGUIController {
             }
         }
 
+        // Ask if to specify appointment details.
+        String details = (String)JOptionPane.showInputDialog(gui.frame, "Please enter details/a description for the appointment:", "Appointment Details", JOptionPane.PLAIN_MESSAGE, null, null, null);
+        if( details != null ) {
+            newAppointment.setDetails(details.trim());
+        }
+
         // Everything validated; add appointment.
         account.addAppointment(newAppointment);
         patient.addAppointment(newAppointment);
@@ -157,7 +179,7 @@ public class DoctorAppointmentsGUIController {
 
         // Add appointments to list
         for( Appointment a : account.getAppointments() ) {
-            model.addRow(new Object[] {a.getStartTime().format(DateTimeFormatter.ofPattern("hh:mm:ss a", java.util.Locale.ENGLISH)), a.getEndTime().format(DateTimeFormatter.ofPattern("hh:mm:ss a", java.util.Locale.ENGLISH)), a.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy", java.util.Locale.ENGLISH)), a.getPatientName()});
+            model.addRow(new Object[] {a.getStartTime().format(DateTimeFormatter.ofPattern("hh:mm:ss a", java.util.Locale.ENGLISH)), a.getEndTime().format(DateTimeFormatter.ofPattern("hh:mm:ss a", java.util.Locale.ENGLISH)), a.getDate().format(DateTimeFormatter.ofPattern("MM/dd/yyyy", java.util.Locale.ENGLISH)), a.getPatientName()});
         }
 
         // Set model to the new table model

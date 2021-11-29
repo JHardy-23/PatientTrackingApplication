@@ -131,4 +131,8 @@ public class GUI_PatientAppointmentsPage {
 		}
 		return null;
 	}
+
+	public JTable getTable() {
+		return AppointmentsList;
+	}
 }

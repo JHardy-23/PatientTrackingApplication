@@ -107,7 +107,7 @@ public abstract class User implements Serializable {
      * Returns true if the ID is not valid, and false if it is.
      */
     public static boolean checkId(String id, boolean isDoctor){
-        return ids.contains(id) || (id.charAt(0) == '0' && !isDoctor) || id.length() != 12;
+        return ids.contains(id) || (id.charAt(0) == '0' && !isDoctor) || (id.charAt(0) != '0' && isDoctor) || id.length() != 12;
     }
 
     /**
