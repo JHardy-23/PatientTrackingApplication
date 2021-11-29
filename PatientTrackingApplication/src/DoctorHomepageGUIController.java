@@ -15,11 +15,11 @@ import java.awt.event.ActionListener;
  * @author cmn68
  */
 public class DoctorHomepageGUIController {
-    public GUI_Package.GUI_PatientHomepage gui;
+    public GUI_Package.GUI_DoctorHomepage gui;
     private Doctor account;
 
     public DoctorHomepageGUIController(Doctor account) {
-        gui = new GUI_Package.GUI_PatientHomepage();
+        gui = new GUI_Package.GUI_DoctorHomepage();
         this.account = account;
         gui.getButton("Sign Out").addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
