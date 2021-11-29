@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -15,11 +17,11 @@ import javax.swing.ListSelectionModel;
 
 public class GUI_PatientInformationPage {
 
-	private JFrame frame;
-	private JTextField firstNameTextField;
-	private JTextField lastNameTextField;
-	private JTextField DOBTextField;
-	private JTextField textField;
+	public JFrame frame;
+	public JTextField firstNameTextField;
+	public JTextField lastNameTextField;
+	public JTextField DOBTextField;
+	public JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -121,4 +123,12 @@ public class GUI_PatientInformationPage {
 		frame.getContentPane().add(editButton);
 	}
 
+	public JButton getButton(String text) {
+		for(Component c : frame.getContentPane().getComponents()) {
+			if( c instanceof JButton && ((JButton) c).getText().equals(text) ) {
+				return (JButton)c;
+			}
+		}
+		return null;
+	}
 }

@@ -40,6 +40,22 @@ public class PatientHomepageGUIController {
                 });
             }
         });
+
+        gui.getButton("Information").addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                PatientInformationGUIController PiController = new PatientInformationGUIController(account);
+                PiController.gui.frame.setLocation(gui.frame.getLocation());
+                PiController.gui.frame.setVisible(true);
+                gui.frame.setVisible(false);
+                PiController.gui.frame.addWindowListener(new PatientTrackerWindowListener() {
+                    public void windowClosed(WindowEvent event){
+                        gui.frame.setVisible(true);
+                        gui.frame.setLocation(PiController.gui.frame.getLocation());
+                    }
+                });
+            }
+        });
+
         gui.getButton("Sign Out").addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gui.frame.dispose();
