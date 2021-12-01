@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
+import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 
 public class GUI_PatientInformationPage {
@@ -22,6 +23,7 @@ public class GUI_PatientInformationPage {
 	public JTextField lastNameTextField;
 	public JTextField DOBTextField;
 	public JTextField textField;
+	public JTextArea textArea;
 
 	/**
 	 * Launch the application.
@@ -107,7 +109,7 @@ public class GUI_PatientInformationPage {
 		doctorsButton.setBounds(380, 278, 236, 41);
 		frame.getContentPane().add(doctorsButton);
 		
-		JLabel medHistoryLabel = new JLabel("Medical History:");
+		/*JLabel medHistoryLabel = new JLabel("Medical History:");
 		medHistoryLabel.setBounds(49, 344, 226, 33);
 		frame.getContentPane().add(medHistoryLabel);
 		
@@ -116,8 +118,20 @@ public class GUI_PatientInformationPage {
 		textField.setColumns(10);
 		textField.setBackground(Color.WHITE);
 		textField.setBounds(380, 347, 236, 114);
-		frame.getContentPane().add(textField);
-		
+		frame.getContentPane().add(textField);*/
+
+
+		JLabel medHistoryLabel = new JLabel("Medical History:");
+		medHistoryLabel.setBounds(49, 344, 226, 33);
+		frame.getContentPane().add(medHistoryLabel);
+
+		textArea = new JTextArea(2 , 20);
+		textArea.setBounds(380,347,236,114);
+		frame.getContentPane().add(textArea);
+		textArea.setEditable(false);
+		textArea.setWrapStyleWord(true);
+		textArea.setLineWrap(true);
+
 		JButton editButton = new JButton("Edit");
 		editButton.setBounds(270, 475, 171, 41);
 		frame.getContentPane().add(editButton);
