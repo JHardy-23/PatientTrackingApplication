@@ -10,6 +10,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 
+import javax.swing.JOptionPane;
+
 /**
  * FXML Controller class
  *
@@ -50,6 +52,14 @@ public class DoctorHomepageGUIController {
                         gui.frame.setLocation(DiController.gui.frame.getLocation());
                     }
                 });
+            }
+        });
+
+        gui.getButton("Account").addActionListener(new ActionListener () {
+            public void actionPerformed(ActionEvent e){
+                String info = "User Name: " + account.getUsername() + "\n" + "Email: " + 
+                account.getEmail();
+                JOptionPane.showMessageDialog(gui.frame, info, "Account Info", JOptionPane.PLAIN_MESSAGE);
             }
         });
 
