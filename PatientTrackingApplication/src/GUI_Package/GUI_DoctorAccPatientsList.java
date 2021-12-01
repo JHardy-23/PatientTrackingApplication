@@ -1,7 +1,6 @@
 package GUI_Package;
 
-import java.awt.EventQueue;
-import java.awt.Font;
+import java.awt.*;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -10,14 +9,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import java.awt.Color;
 
 public class GUI_DoctorAccPatientsList {
 
-	private JFrame frame;
-	private JTable PatientsTable;
-	private JTextField firstNameTextField;
-	private JTextField lastNameTextField;
+	public JFrame frame;
+	public JTable PatientsTable;
+	public JTextField firstNameTextField;
+	public JTextField lastNameTextField;
+	public JScrollPane scrollPane;
 
 	/**
 	 * Launch the application.
@@ -63,7 +62,9 @@ public class GUI_DoctorAccPatientsList {
 		PatientsTable = new JTable();
 		PatientsTable.setBackground(new Color(255, 228, 225));
 		PatientsTable.setBounds(264, 112, 478, 422);
-		frame.getContentPane().add(PatientsTable);
+		scrollPane = new JScrollPane(PatientsTable);
+		scrollPane.setBounds(PatientsTable.getX(), PatientsTable.getY(), PatientsTable.getWidth(), PatientsTable.getHeight());
+		frame.getContentPane().add(scrollPane);
 		
 		JLabel firstNameLabel = new JLabel("First Name");
 		firstNameLabel.setForeground(new Color(255, 255, 255));
@@ -96,5 +97,14 @@ public class GUI_DoctorAccPatientsList {
 		frame.getContentPane().add(lastNameTextField);
 		frame.setBounds(100, 100, 800, 651);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	}
+
+	public JButton getButton(String text) {
+		for(Component c : frame.getContentPane().getComponents()) {
+			if( c instanceof JButton && ((JButton) c).getText().equals(text) ) {
+				return (JButton)c;
+			}
+		}
+		return null;
 	}
 }

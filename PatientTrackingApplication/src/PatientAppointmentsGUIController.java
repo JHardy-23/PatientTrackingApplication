@@ -116,8 +116,14 @@ public class PatientAppointmentsGUIController {
             }
         }
 
+        // Check if time frame is not in the past
+        Appointment newAppointment = new Appointment(startPeriod.equals("PM") ? startHour + 12 : startHour, startMinutes, endPeriod.equals("PM") ? endHour + 12 : endHour, endMinutes, date, doctor.getID(), account.getID());
+        if(java.time.LocalDate.now().isAfter(newAppointment.getDate())) {
+            JOptionPane.showMessageDialog(gui.frame, "Invalid text entry. You cannot appointments cannot be made for a past time/date.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
         // Time frame is valid. Now check if the time frame does not conflict with another appointment.
-        Appointment newAppointment = new Appointment(startPeriod.equals("PM") ? startHour + 12 : startHour, startMinutes, endPeriod.equals("PM") ? endHour + 12 : endHour, endMinutes, date, account.getID(), doctor.getID());
         for( Appointment a : account.getAppointments() ) {
             if( a.conflictsWith(newAppointment) ) {
                 JOptionPane.showMessageDialog(gui.frame, "Unfortunately, the appointment specified conflicts with another appointment\nPlease refer to appointments list to correct this conflict.", "ERROR", JOptionPane.ERROR_MESSAGE);
