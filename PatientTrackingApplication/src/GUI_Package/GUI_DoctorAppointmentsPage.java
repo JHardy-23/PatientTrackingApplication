@@ -121,7 +121,7 @@ public class GUI_DoctorAppointmentsPage {
 		panel.add(appointmentsLabel);
 		
 		JButton requestButton = new JButton("Create New Appointment");
-		requestButton.setBackground(new Color(255, 240, 245));
+		requestButton.setBackground(new Color(255, 192, 203));
 		requestButton.setForeground(Color.BLACK);
 		requestButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -132,6 +132,7 @@ public class GUI_DoctorAppointmentsPage {
 		panel.add(requestButton);
 
 		AppointmentsList = new JTable();
+		AppointmentsList.setBackground(new Color(255, 192, 203));
 		AppointmentsList.setBounds(326, 92, 416, 442);
 		scrollPane = new JScrollPane(AppointmentsList);
 		scrollPane.setBounds(AppointmentsList.getX(), AppointmentsList.getY(), AppointmentsList.getWidth(), AppointmentsList.getHeight());
