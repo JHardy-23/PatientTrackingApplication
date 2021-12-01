@@ -52,38 +52,51 @@ public class GUI_DoctorInformationPage {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(128, 0, 0));
 		frame.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 27));
 		frame.setBounds(100, 100, 775, 632);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel informationLabel = new JLabel("Information");
+		informationLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		informationLabel.setForeground(new Color(255, 255, 255));
+		informationLabel.setBackground(new Color(255, 255, 255));
 		informationLabel.setFont(new Font("Algerian", Font.PLAIN, 35));
-		informationLabel.setBounds(260, 28, 264, 33);
+		informationLabel.setBounds(201, 28, 310, 33);
 		frame.getContentPane().add(informationLabel);
 		
 		
 		
 		JLabel firstNameLabel = new JLabel("First Name:");
-		firstNameLabel.setBounds(49, 127, 177, 33);
+		firstNameLabel.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		firstNameLabel.setForeground(new Color(255, 255, 255));
+		firstNameLabel.setBounds(49, 127, 226, 33);
 		frame.getContentPane().add(firstNameLabel);
 		
 		JLabel lastNameLabel = new JLabel("Last Name:");
-		lastNameLabel.setBounds(49, 184, 177, 33);
+		lastNameLabel.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		lastNameLabel.setForeground(new Color(255, 255, 255));
+		lastNameLabel.setBounds(49, 184, 236, 33);
 		frame.getContentPane().add(lastNameLabel);
 		
 		
 		JLabel professionLabel = new JLabel("Profession:");
+		professionLabel.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		professionLabel.setForeground(new Color(255, 255, 255));
 		professionLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		professionLabel.setBounds(49, 245, 218, 33);
 		frame.getContentPane().add(professionLabel);
 		
 		
 		JLabel PatientsLabel = new JLabel("Patients:");
-		PatientsLabel.setBounds(49, 306, 177, 33);
+		PatientsLabel.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		PatientsLabel.setForeground(new Color(255, 255, 255));
+		PatientsLabel.setBounds(49, 306, 200, 33);
 		frame.getContentPane().add(PatientsLabel);
 		
 		JButton PatientsButton = new JButton("Click here for Patients");
+		PatientsButton.setBackground(new Color(255, 228, 225));
 		PatientsButton.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		PatientsButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -93,19 +106,26 @@ public class GUI_DoctorInformationPage {
 		frame.getContentPane().add(PatientsButton);
 		
 		JButton editButton = new JButton("Edit");
+		editButton.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		editButton.setBackground(new Color(255, 228, 225));
 		editButton.setBounds(270, 475, 171, 41);
 		frame.getContentPane().add(editButton);
 		
 		JLabel educationLabel = new JLabel("Education:");
+		educationLabel.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		educationLabel.setForeground(new Color(255, 255, 255));
 		educationLabel.setBounds(49, 367, 226, 33);
 		frame.getContentPane().add(educationLabel);
 		
 		JLabel SuffixLabel = new JLabel("Suffix :");
+		SuffixLabel.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		SuffixLabel.setForeground(new Color(255, 255, 255));
 		SuffixLabel.setHorizontalAlignment(SwingConstants.LEFT);
-		SuffixLabel.setBounds(49, 76, 115, 33);
+		SuffixLabel.setBounds(49, 76, 194, 33);
 		frame.getContentPane().add(SuffixLabel);
 		
 		suffixTextField = new JTextField();
+		suffixTextField.setFont(new Font("Tahoma", Font.PLAIN, 35));
 		suffixTextField.setBounds(384, 73, 236, 39);
 		frame.getContentPane().add(suffixTextField);
 		suffixTextField.setColumns(10);

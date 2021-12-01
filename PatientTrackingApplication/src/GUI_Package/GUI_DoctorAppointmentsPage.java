@@ -53,16 +53,19 @@ public class GUI_DoctorAppointmentsPage {
 		frame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(new Color(128, 0, 0));
 		panel.setBounds(0, 0, 768, 562);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		JLabel lastNameLabel = new JLabel("Last Name :");
+		lastNameLabel.setForeground(new Color(255, 255, 255));
 		lastNameLabel.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		lastNameLabel.setBounds(14, 178, 115, 33);
 		panel.add(lastNameLabel);
 		
 		JLabel dateLabel = new JLabel("Date :");
+		dateLabel.setForeground(new Color(255, 255, 255));
 		dateLabel.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		dateLabel.setBounds(14, 129, 115, 33);
 		panel.add(dateLabel);
@@ -78,6 +81,7 @@ public class GUI_DoctorAppointmentsPage {
 		panel.add(lastNameTextField);
 		
 		JLabel firstNameLabel = new JLabel("First Name :");
+		firstNameLabel.setForeground(new Color(255, 255, 255));
 		firstNameLabel.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		firstNameLabel.setBounds(14, 232, 115, 33);
 		panel.add(firstNameLabel);
@@ -88,6 +92,7 @@ public class GUI_DoctorAppointmentsPage {
 		panel.add(firstNameTextField);
 		
 		JLabel startTimeLabel = new JLabel("Start Time :");
+		startTimeLabel.setForeground(new Color(255, 255, 255));
 		startTimeLabel.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		startTimeLabel.setBounds(14, 282, 115, 33);
 		panel.add(startTimeLabel);
@@ -98,6 +103,7 @@ public class GUI_DoctorAppointmentsPage {
 		panel.add(startTimeTextField);
 		
 		JLabel endTimeLabel = new JLabel("End Time :");
+		endTimeLabel.setForeground(new Color(255, 255, 255));
 		endTimeLabel.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		endTimeLabel.setBounds(14, 336, 115, 33);
 		panel.add(endTimeLabel);
@@ -108,11 +114,15 @@ public class GUI_DoctorAppointmentsPage {
 		panel.add(endTimeTextField);
 		
 		JLabel appointmentsLabel = new JLabel("Appointments");
+		appointmentsLabel.setForeground(new Color(255, 255, 255));
+		appointmentsLabel.setBackground(new Color(255, 255, 255));
 		appointmentsLabel.setFont(new Font("Algerian", Font.PLAIN, 40));
 		appointmentsLabel.setBounds(222, 31, 343, 33);
 		panel.add(appointmentsLabel);
 		
 		JButton requestButton = new JButton("Create New Appointment");
+		requestButton.setBackground(new Color(255, 192, 203));
+		requestButton.setForeground(Color.BLACK);
 		requestButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -122,6 +132,7 @@ public class GUI_DoctorAppointmentsPage {
 		panel.add(requestButton);
 
 		AppointmentsList = new JTable();
+		AppointmentsList.setBackground(new Color(255, 192, 203));
 		AppointmentsList.setBounds(326, 92, 416, 442);
 		scrollPane = new JScrollPane(AppointmentsList);
 		scrollPane.setBounds(AppointmentsList.getX(), AppointmentsList.getY(), AppointmentsList.getWidth(), AppointmentsList.getHeight());
