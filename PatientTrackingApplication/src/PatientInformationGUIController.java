@@ -62,29 +62,27 @@ public class PatientInformationGUIController{
                     case 3:
                             String date = (String)JOptionPane.showInputDialog(gui.frame, "Please enter your date of birth\n Must be in the format MM/DD/YYYY", 
                             "Customized Dialog", JOptionPane.PLAIN_MESSAGE, null, null, null);
-                            int month, day, year;
-                            try{
-                                month = Integer.valueOf(date.substring(0,2));
-                                day = Integer.valueOf(date.substring(3, 5));
-                                year = Integer.valueOf(date.substring(6, date.length()));
-                            }
-                            catch(Exception q){
-                                JOptionPane.showInputDialog(gui.frame, "The date you entered was invalid please try again\n Must be in the format MM/DD/YYYY", 
-                                "Customized Dialog", JOptionPane.PLAIN_MESSAGE, null, null, null);
-                                break;
-                            }
-
+                            int month = 0, day = 0, year = 0;
                             while(true){
-                                if(date.length() == 10 && date.charAt(2) == '/' && date.charAt(5) == '/' && day > 0 && day < 32 && month > 0 && month < 13 && year > 1899 && year < 2022){
-                                    updateDOB(date);
-                                    account.setDateOfBirth(date);
-                                    break;
-                                }
-                                else{
-                                    date = (String)JOptionPane.showInputDialog(gui.frame, "The date you entered was invalid please try again\n Must be in the format MM/DD/YYYY", 
+                                try{
+                                    month = Integer.valueOf(date.substring(0,2));
+                                    day = Integer.valueOf(date.substring(3, 5));
+                                    year = Integer.valueOf(date.substring(6, date.length()));
+                                    if(date.length() == 10 && date.charAt(2) == '/' && date.charAt(5) == '/' && day > 0 && day < 32 && month > 0 && month < 13 && year > 1899 && year < 2022){
+                                        updateDOB(date);
+                                        account.setDateOfBirth(date);
+                                        break;
+                                    }
+                                    else{
+                                        date = (String)JOptionPane.showInputDialog(gui.frame, "first The date you entered was invalid please try again\n Must be in the format MM/DD/YYYY", 
+                                        "Customized Dialog", JOptionPane.PLAIN_MESSAGE, null, null, null);
+                                    }
+                                }   
+                                catch(Exception p){
+                                    date = (String)JOptionPane.showInputDialog(gui.frame, "first The date you entered was invalid please try again\n Must be in the format MM/DD/YYYY", 
                                     "Customized Dialog", JOptionPane.PLAIN_MESSAGE, null, null, null);
                                 }
-                            }
+                            }   
                             break;
                 }
             }
