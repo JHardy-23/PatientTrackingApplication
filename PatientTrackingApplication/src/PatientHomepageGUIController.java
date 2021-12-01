@@ -72,6 +72,14 @@ public class PatientHomepageGUIController {
             }
         });
 
+        gui.getButton("Account").addActionListener(new ActionListener () {
+            public void actionPerformed(ActionEvent e){
+                String info = "User Name: " + account.getUsername() + "\n" + "Email: " + 
+                account.getEmail();
+                JOptionPane.showMessageDialog(gui.frame, info, "Account Info", JOptionPane.PLAIN_MESSAGE);
+            }
+        });
+
         gui.getButton("Sign Out").addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gui.frame.dispose();

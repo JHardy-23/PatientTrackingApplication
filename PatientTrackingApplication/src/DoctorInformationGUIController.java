@@ -71,8 +71,8 @@ public class DoctorInformationGUIController{
                         break;
                     case 4:
                         gui.textArea.setEditable(true);
-                        String z = (String)JOptionPane.showInputDialog(gui.frame, "Please Update your medical record (This will delete everything else): ", 
-                        "Customized Dialog", JOptionPane.PLAIN_MESSAGE, null, null, null);
+                        String z = (String)JOptionPane.showInputDialog(gui.frame, "Please Update your Education (This will delete everything else): ", 
+                        "Update Education", JOptionPane.PLAIN_MESSAGE, null, null, null);
                         updateEdu(z);
                         gui.textArea.setEditable(false);
                         break;
