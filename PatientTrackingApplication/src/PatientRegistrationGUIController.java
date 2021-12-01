@@ -34,6 +34,12 @@ public class PatientRegistrationGUIController {
                             // Get updated HashSet from serialized HashSet file
                             User.ReadSetFromUserFile();
 
+                            // Validate username
+                            if( User.usernameExists(gui.UserNameTextField.getText()) ) {
+                                JOptionPane.showMessageDialog(gui.frame, "Failed to register new patient. The entered username is taken.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                                break;
+                            }
+
                             // Add new user to users HashSet
                             User.AddUser(new Patient(gui.FirstNameTextField.getText(), gui.LastNameTextField.getText(), gui.UserNameTextField.getText(), gui.PhoneNumberTextField.getText(), gui.EmailTextField.getText(), gui.passwordTextField.getText()));
 

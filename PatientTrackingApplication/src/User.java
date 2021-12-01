@@ -111,6 +111,18 @@ public abstract class User implements Serializable {
     }
 
     /**
+     * Returns true if the username already exists, and false if doesn't.
+     */
+    public static boolean usernameExists(String username){
+        for( User u : users ) {
+            if( u.getUsername().equalsIgnoreCase(username) ) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Method that returns the first name of a User
      */
     public String getFirstName(){

@@ -36,6 +36,10 @@ public class DoctorRegistrationGUIController {
                                 JOptionPane.showMessageDialog(gui.frame, "Failed to register new doctor. The entered Id is not a valid Doctor Id.\n\nThe Id should begin with a 0, and be 12 characters long. Existing IDs will not be accepted.", "ERROR", JOptionPane.ERROR_MESSAGE);
                                 break;
                             }
+                            else if( User.usernameExists(gui.UserNameTextField.getText()) ) {
+                                JOptionPane.showMessageDialog(gui.frame, "Failed to register new doctor. The entered username is taken.", "ERROR", JOptionPane.ERROR_MESSAGE);
+                                break;
+                            }
                             User.AddUser(new Doctor(gui.FirstNameTextField.getText(), gui.LastNameTextField.getText(), gui.UserNameTextField.getText(), gui.EmailTextField.getText(), gui.passwordTextField.getText(), gui.PhoneNumberTextField.getText(), gui.DoctorIDTextField.getText()));
 
                             // Write new HashSet to serialized HashSet file
