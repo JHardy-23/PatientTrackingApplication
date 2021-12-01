@@ -60,7 +60,7 @@ public class GUI_DoctorAccPatientsList {
 		frame.getContentPane().add(patientsTitleLabel);
 		
 		PatientsTable = new JTable();
-		PatientsTable.setBackground(new Color(255, 240, 245));
+		PatientsTable.setBackground(new Color(255, 228, 225));
 		PatientsTable.setBounds(264, 112, 478, 422);
 		scrollPane = new JScrollPane(PatientsTable);
 		scrollPane.setBounds(PatientsTable.getX(), PatientsTable.getY(), PatientsTable.getWidth(), PatientsTable.getHeight());
@@ -80,7 +80,7 @@ public class GUI_DoctorAccPatientsList {
 		
 		JButton addPatientButton = new JButton("Add Patient");
 		addPatientButton.setForeground(Color.DARK_GRAY);
-		addPatientButton.setBackground(new Color(255, 192, 203));
+		addPatientButton.setBackground(new Color(255, 228, 225));
 		addPatientButton.setBounds(53, 298, 171, 41);
 		frame.getContentPane().add(addPatientButton);
 		

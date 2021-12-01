@@ -52,6 +52,22 @@ public class DoctorHomepageGUIController {
                 });
             }
         });
+
+        gui.getButton("Information").addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                DoctorInformationGUIController DiController = new DoctorInformationGUIController(account);
+                DiController.gui.frame.setLocation(gui.frame.getLocation());
+                DiController.gui.frame.setVisible(true);
+                gui.frame.setVisible(false);
+                DiController.gui.frame.addWindowListener(new PatientTrackerWindowListener() {
+                    public void windowClosed(WindowEvent event){
+                        gui.frame.setVisible(true);
+                        gui.frame.setLocation(DiController.gui.frame.getLocation());
+                    }
+                });
+            }
+        });
+
         gui.getButton("Sign Out").addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 gui.frame.dispose();
