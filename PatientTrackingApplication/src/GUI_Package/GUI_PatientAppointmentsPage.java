@@ -51,7 +51,7 @@ public class GUI_PatientAppointmentsPage {
 		frame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 768, 562);
+		panel.setBounds(0, 0, 800, 650);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		

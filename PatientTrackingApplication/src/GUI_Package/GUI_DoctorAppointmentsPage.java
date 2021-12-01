@@ -137,7 +137,7 @@ public class GUI_DoctorAppointmentsPage {
 		scrollPane = new JScrollPane(AppointmentsList);
 		scrollPane.setBounds(AppointmentsList.getX(), AppointmentsList.getY(), AppointmentsList.getWidth(), AppointmentsList.getHeight());
 		panel.add(scrollPane);
-		frame.setBounds(100, 100, 800, 650);
+		panel.setBounds(0, 0, 800, 650);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
 	}
