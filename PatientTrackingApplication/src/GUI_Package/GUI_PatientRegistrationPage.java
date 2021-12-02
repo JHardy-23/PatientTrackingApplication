@@ -47,17 +47,20 @@ public class GUI_PatientRegistrationPage {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(128, 0, 0));
 		frame.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 27));
 		frame.setBounds(100, 100, 800, 650);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		// Starter Page of Application
 		JLabel RegistrationTitleLabel = new JLabel("Patient Registration");
+		RegistrationTitleLabel.setForeground(new Color(255, 255, 255));
 		RegistrationTitleLabel.setFont(new Font("Algerian", Font.PLAIN, 50));
 		RegistrationTitleLabel.setBounds(96, 0, 585, 91);
 		frame.getContentPane().add(RegistrationTitleLabel);
 		
 		JLabel LastNameLabel = new JLabel("Last Name");
+		LastNameLabel.setForeground(new Color(255, 255, 255));
 		LastNameLabel.setBounds(274, 81, 155, 35);
 		frame.getContentPane().add(LastNameLabel);
 		
@@ -67,6 +70,7 @@ public class GUI_PatientRegistrationPage {
 		LastNameTextField.setColumns(10);
 		
 		JLabel FirstNameLabel = new JLabel("First Name");
+		FirstNameLabel.setForeground(new Color(255, 255, 255));
 		FirstNameLabel.setBounds(26, 81, 155, 35);
 		frame.getContentPane().add(FirstNameLabel);
 		
@@ -76,6 +80,7 @@ public class GUI_PatientRegistrationPage {
 		frame.getContentPane().add(FirstNameTextField);
 		
 		JLabel PhoneNumberLabel = new JLabel("Phone Number");
+		PhoneNumberLabel.setForeground(new Color(255, 255, 255));
 		PhoneNumberLabel.setBounds(26, 172, 199, 33);
 		frame.getContentPane().add(PhoneNumberLabel);
 		
@@ -85,6 +90,7 @@ public class GUI_PatientRegistrationPage {
 		frame.getContentPane().add(PhoneNumberTextField);
 		
 		JLabel EmailAddressLabel = new JLabel("Email");
+		EmailAddressLabel.setForeground(new Color(255, 255, 255));
 		EmailAddressLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		EmailAddressLabel.setBounds(274, 172, 199, 33);
 		frame.getContentPane().add(EmailAddressLabel);
@@ -95,6 +101,7 @@ public class GUI_PatientRegistrationPage {
 		frame.getContentPane().add(EmailTextField);
 		
 		JLabel UsernameLabel = new JLabel("Username");
+		UsernameLabel.setForeground(new Color(255, 255, 255));
 		UsernameLabel.setBounds(26, 278, 199, 33);
 		frame.getContentPane().add(UsernameLabel);
 		
@@ -104,16 +111,19 @@ public class GUI_PatientRegistrationPage {
 		frame.getContentPane().add(UserNameTextField);
 		
 		JLabel PasswordLabel = new JLabel("Password");
+		PasswordLabel.setForeground(new Color(255, 255, 255));
 		PasswordLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		PasswordLabel.setBounds(26, 381, 199, 33);
 		frame.getContentPane().add(PasswordLabel);
 		
 		JLabel lblRepeatPassword = new JLabel("Repeat Password");
+		lblRepeatPassword.setForeground(new Color(255, 255, 255));
 		lblRepeatPassword.setHorizontalAlignment(SwingConstants.LEFT);
 		lblRepeatPassword.setBounds(299, 381, 236, 33);
 		frame.getContentPane().add(lblRepeatPassword);
 		
 		JButton RegisterButton = new JButton("Register");
+		RegisterButton.setBackground(new Color(255, 228, 225));
 		RegisterButton.setBounds(302, 493, 171, 41);
 		frame.getContentPane().add(RegisterButton);
 		

@@ -45,6 +45,7 @@ public class GUI_PatientAccDoctorsList {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(128, 0, 0));
 		frame.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 27));
 		frame.getContentPane().setLayout(null);
 		
@@ -55,22 +56,26 @@ public class GUI_PatientAccDoctorsList {
 		frame.getContentPane().add(scrollPane);
 		
 		JLabel lblNewLabel = new JLabel("Doctor ID");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel.setBounds(26, 112, 96, 33);
+		lblNewLabel.setForeground(new Color(255, 255, 255));
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 35));
+		lblNewLabel.setBounds(26, 112, 172, 33);
 		frame.getContentPane().add(lblNewLabel);
 		
 		JLabel doctorsTitleLabel = new JLabel("Doctors");
-		doctorsTitleLabel.setFont(new Font("Algerian", Font.PLAIN, 35));
-		doctorsTitleLabel.setBounds(286, 37, 220, 33);
+		doctorsTitleLabel.setForeground(new Color(255, 255, 255));
+		doctorsTitleLabel.setFont(new Font("Algerian", Font.PLAIN, 45));
+		doctorsTitleLabel.setBounds(239, 28, 281, 65);
 		frame.getContentPane().add(doctorsTitleLabel);
 		
 		textField = new JTextField();
-		textField.setBounds(133, 112, 162, 33);
+		textField.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		textField.setBounds(26, 151, 236, 33);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Add Doctor");
-		btnNewButton.setBounds(60, 173, 171, 41);
+		btnNewButton.setBackground(new Color(255, 228, 225));
+		btnNewButton.setBounds(36, 213, 171, 41);
 		frame.getContentPane().add(btnNewButton);
 		frame.setBounds(100, 100, 800, 650);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

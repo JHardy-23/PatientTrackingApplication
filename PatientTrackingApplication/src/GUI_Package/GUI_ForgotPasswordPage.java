@@ -41,16 +41,19 @@ public class GUI_ForgotPasswordPage {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(128, 0, 0));
 		frame.setBounds(100, 100, 1142, 420);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel ForgotPassTitleLabel = new JLabel("Forgot Password?");
+		ForgotPassTitleLabel.setForeground(new Color(255, 255, 255));
 		ForgotPassTitleLabel.setFont(new Font("Algerian", Font.PLAIN, 40));
 		ForgotPassTitleLabel.setBounds(373, 28, 378, 33);
 		frame.getContentPane().add(ForgotPassTitleLabel);
 		
 		JLabel informationLabel = new JLabel("Enter the email associated with your account and we'll send an email with instructions to reset your password");
+		informationLabel.setForeground(new Color(255, 255, 255));
 		informationLabel.setVerticalAlignment(SwingConstants.TOP);
 		informationLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		informationLabel.setFont(new Font("Tahoma", Font.PLAIN, 21));
@@ -63,10 +66,12 @@ public class GUI_ForgotPasswordPage {
 		emailAddresstextField.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Email Address");
+		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setBounds(322, 126, 185, 33);
 		frame.getContentPane().add(lblNewLabel_2);
 		
 		JButton submitButton = new JButton("Submit");
+		submitButton.setBackground(new Color(255, 228, 225));
 		submitButton.setBounds(454, 235, 171, 41);
 		frame.getContentPane().add(submitButton);
 	}
