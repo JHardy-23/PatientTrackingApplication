@@ -62,16 +62,19 @@ public class PatientInformationGUIController{
                     case 3:
                             String date = (String)JOptionPane.showInputDialog(gui.frame, "Please enter your date of birth\n Must be in the format MM/DD/YYYY", 
                             "Customized Dialog", JOptionPane.PLAIN_MESSAGE, null, null, null);
-                            int month, day, year;
+                            int month = 0;
+                            int day = 0;
+                            int year = 0;
+
                             try{
                                 month = Integer.valueOf(date.substring(0,2));
                                 day = Integer.valueOf(date.substring(3, 5));
                                 year = Integer.valueOf(date.substring(6, date.length()));
+
                             }
                             catch(Exception q){
                                 JOptionPane.showInputDialog(gui.frame, "The date you entered was invalid please try again\n Must be in the format MM/DD/YYYY", 
                                 "Customized Dialog", JOptionPane.PLAIN_MESSAGE, null, null, null);
-                                break;
                             }
 
                             while(true){
@@ -81,7 +84,7 @@ public class PatientInformationGUIController{
                                     break;
                                 }
                                 else{
-                                    date = (String)JOptionPane.showInputDialog(gui.frame, "The date you entered was invalid please try again\n Must be in the format MM/DD/YYYY", 
+                                    date = (String)JOptionPane.showInputDialog(gui.frame, "second The date you entered was invalid please try again\n Must be in the format MM/DD/YYYY", 
                                     "Customized Dialog", JOptionPane.PLAIN_MESSAGE, null, null, null);
                                 }
                             }
@@ -119,4 +122,5 @@ public class PatientInformationGUIController{
             System.out.println("ERROR writing changes to users file.");
         }
     }
+
 }
