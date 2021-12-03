@@ -41,53 +41,48 @@ public class PatientInformationGUIController{
                 switch(choice){
                     case 0:
                         String x = (String)JOptionPane.showInputDialog(gui.frame, "Please input your new first name: ", 
-                        "Customized Dialog", JOptionPane.PLAIN_MESSAGE, null, null, null);
+                        "Update First Name", JOptionPane.PLAIN_MESSAGE, null, null, null);
                         account.Fname = x;
                         updatefName(x);
                         break;
                     case 1:
                         String y = (String)JOptionPane.showInputDialog(gui.frame, "Please input your new last name: ", 
-                        "Customized Dialog", JOptionPane.PLAIN_MESSAGE, null, null, null);
+                        "Update Last Name", JOptionPane.PLAIN_MESSAGE, null, null, null);
                         account.Lname = y;
                         updatelName(y);
                         break;
                     case 2:
                         gui.textArea.setEditable(true);
                         String z = (String)JOptionPane.showInputDialog(gui.frame, "Please Update your medical record (This will delete everything else): ", 
-                        "Customized Dialog", JOptionPane.PLAIN_MESSAGE, null, null, null);
+                        "Update Medical Records", JOptionPane.PLAIN_MESSAGE, null, null, null);
                         account.setMedicalHistory(z);
                         updateMedhist(z);
                         gui.textArea.setEditable(false);
                         break;
                     case 3:
                             String date = (String)JOptionPane.showInputDialog(gui.frame, "Please enter your date of birth\n Must be in the format MM/DD/YYYY", 
-                            "Customized Dialog", JOptionPane.PLAIN_MESSAGE, null, null, null);
-                            int month = 0;
-                            int day = 0;
-                            int year = 0;
-
-                            try{
-                                month = Integer.valueOf(date.substring(0,2));
-                                day = Integer.valueOf(date.substring(3, 5));
-                                year = Integer.valueOf(date.substring(6, date.length()));
-
-                            }
-                            catch(Exception q){
-                                JOptionPane.showInputDialog(gui.frame, "The date you entered was invalid please try again\n Must be in the format MM/DD/YYYY", 
-                                "Customized Dialog", JOptionPane.PLAIN_MESSAGE, null, null, null);
-                            }
-
+                            "Update DOB", JOptionPane.PLAIN_MESSAGE, null, null, null);
+                            int month = 0, day = 0, year = 0;
                             while(true){
-                                if(date.length() == 10 && date.charAt(2) == '/' && date.charAt(5) == '/' && day > 0 && day < 32 && month > 0 && month < 13 && year > 1899 && year < 2022){
-                                    updateDOB(date);
-                                    account.setDateOfBirth(date);
-                                    break;
+                                try{
+                                    month = Integer.valueOf(date.substring(0,2));
+                                    day = Integer.valueOf(date.substring(3, 5));
+                                    year = Integer.valueOf(date.substring(6, date.length()));
+                                    if(date.length() == 10 && date.charAt(2) == '/' && date.charAt(5) == '/' && day > 0 && day < 32 && month > 0 && month < 13 && year > 1899 && year < 2022){
+                                        updateDOB(date);
+                                        account.setDateOfBirth(date);
+                                        break;
+                                    }
+                                    else{
+                                        date = (String)JOptionPane.showInputDialog(gui.frame, "The date you entered was invalid please try again\n Must be in the format MM/DD/YYYY", 
+                                        "Update DOB", JOptionPane.PLAIN_MESSAGE, null, null, null);
+                                    }
+                                }   
+                                catch(Exception p){
+                                    date = (String)JOptionPane.showInputDialog(gui.frame, "The date you entered was invalid please try again\n Must be in the format MM/DD/YYYY", 
+                                    "Update DOB", JOptionPane.PLAIN_MESSAGE, null, null, null);
                                 }
-                                else{
-                                    date = (String)JOptionPane.showInputDialog(gui.frame, "second The date you entered was invalid please try again\n Must be in the format MM/DD/YYYY", 
-                                    "Customized Dialog", JOptionPane.PLAIN_MESSAGE, null, null, null);
-                                }
-                            }
+                            }   
                             break;
                 }
             }

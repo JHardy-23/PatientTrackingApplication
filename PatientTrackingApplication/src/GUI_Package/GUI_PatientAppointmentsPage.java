@@ -51,16 +51,26 @@ public class GUI_PatientAppointmentsPage {
 		frame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
+
+		panel.setBounds(0, 0, 800, 650);
+
+
+		panel.setBackground(new Color(128, 0, 0));
 		panel.setBounds(0, 0, 768, 562);
+
+		panel.setBounds(0, 0, 800, 650);
+
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		JLabel lastNameLabel = new JLabel("Last Name :");
+		lastNameLabel.setForeground(new Color(255, 255, 255));
 		lastNameLabel.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		lastNameLabel.setBounds(14, 178, 115, 33);
 		panel.add(lastNameLabel);
 		
 		JLabel dateLabel = new JLabel("Date :");
+		dateLabel.setForeground(new Color(255, 255, 255));
 		dateLabel.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		dateLabel.setBounds(14, 129, 115, 33);
 		panel.add(dateLabel);
@@ -76,6 +86,7 @@ public class GUI_PatientAppointmentsPage {
 		panel.add(lastNameTextField);
 		
 		JLabel firstNameLabel = new JLabel("First Name :");
+		firstNameLabel.setForeground(new Color(255, 255, 255));
 		firstNameLabel.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		firstNameLabel.setBounds(14, 232, 115, 33);
 		panel.add(firstNameLabel);
@@ -86,6 +97,7 @@ public class GUI_PatientAppointmentsPage {
 		panel.add(firstNameTextField);
 		
 		JLabel startTimeLabel = new JLabel("Start Time :");
+		startTimeLabel.setForeground(new Color(255, 255, 255));
 		startTimeLabel.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		startTimeLabel.setBounds(14, 282, 115, 33);
 		panel.add(startTimeLabel);
@@ -96,6 +108,7 @@ public class GUI_PatientAppointmentsPage {
 		panel.add(startTimeTextField);
 		
 		JLabel endTimeLabel = new JLabel("End Time :");
+		endTimeLabel.setForeground(new Color(255, 255, 255));
 		endTimeLabel.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		endTimeLabel.setBounds(14, 336, 115, 33);
 		panel.add(endTimeLabel);
@@ -106,11 +119,13 @@ public class GUI_PatientAppointmentsPage {
 		panel.add(endTimeTextField);
 		
 		JLabel appointmentsLabel = new JLabel("Appointments");
+		appointmentsLabel.setForeground(new Color(255, 255, 255));
 		appointmentsLabel.setFont(new Font("Algerian", Font.PLAIN, 40));
-		appointmentsLabel.setBounds(222, 31, 343, 33);
+		appointmentsLabel.setBounds(222, 31, 343, 47);
 		panel.add(appointmentsLabel);
 		
 		JButton requestButton = new JButton("Request New Appointment");
+		requestButton.setBackground(new Color(255, 228, 225));
 		requestButton.setFont(new Font("Tahoma", Font.PLAIN, 21));
 		requestButton.setBounds(14, 397, 296, 41);
 		panel.add(requestButton);

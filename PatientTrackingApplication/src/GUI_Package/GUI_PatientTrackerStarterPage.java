@@ -39,17 +39,20 @@ public class GUI_PatientTrackerStarterPage {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(128, 0, 0));
 		frame.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 27));
 		frame.setBounds(100, 100, 800, 650);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		// Starter Page of Application
 		JLabel HomepageTitle = new JLabel("Patient Tracker");
+		HomepageTitle.setForeground(new Color(255, 255, 255));
 		HomepageTitle.setFont(new Font("Algerian", Font.PLAIN, 60));
 		HomepageTitle.setBounds(110, 28, 585, 91);
 		frame.getContentPane().add(HomepageTitle);
 		
 		JButton PatientButton = new JButton("Sign In");
+		PatientButton.setBackground(new Color(255, 228, 225));
 		PatientButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -58,6 +61,7 @@ public class GUI_PatientTrackerStarterPage {
 		frame.getContentPane().add(PatientButton);
 		
 		JButton RegisterButton = new JButton("Register");
+		RegisterButton.setBackground(new Color(255, 228, 225));
 		RegisterButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}

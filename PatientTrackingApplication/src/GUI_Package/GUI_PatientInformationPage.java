@@ -53,14 +53,16 @@ public class GUI_PatientInformationPage {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(128, 0, 0));
 		frame.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 27));
 		frame.setBounds(100, 100, 775, 632);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel informationLabel = new JLabel("Information");
+		informationLabel.setForeground(new Color(255, 228, 225));
 		informationLabel.setFont(new Font("Algerian", Font.PLAIN, 35));
-		informationLabel.setBounds(260, 28, 264, 33);
+		informationLabel.setBounds(234, 28, 290, 41);
 		frame.getContentPane().add(informationLabel);
 		
 		firstNameTextField = new JTextField();
@@ -71,10 +73,12 @@ public class GUI_PatientInformationPage {
 		firstNameTextField.setColumns(10);
 		
 		JLabel firstNameLabel = new JLabel("First Name:");
+		firstNameLabel.setForeground(new Color(255, 255, 255));
 		firstNameLabel.setBounds(49, 92, 177, 33);
 		frame.getContentPane().add(firstNameLabel);
 		
 		JLabel lastNameLabel = new JLabel("Last Name:");
+		lastNameLabel.setForeground(new Color(255, 255, 255));
 		lastNameLabel.setBounds(49, 153, 177, 33);
 		frame.getContentPane().add(lastNameLabel);
 		
@@ -86,6 +90,7 @@ public class GUI_PatientInformationPage {
 		frame.getContentPane().add(lastNameTextField);
 		
 		JLabel DOBLabel = new JLabel("Date of Birth:");
+		DOBLabel.setForeground(new Color(255, 255, 255));
 		DOBLabel.setBounds(49, 214, 177, 33);
 		frame.getContentPane().add(DOBLabel);
 		
@@ -97,10 +102,12 @@ public class GUI_PatientInformationPage {
 		frame.getContentPane().add(DOBTextField);
 		
 		JLabel DoctorsLabel = new JLabel("Doctors:");
+		DoctorsLabel.setForeground(new Color(255, 255, 255));
 		DoctorsLabel.setBounds(49, 275, 177, 33);
 		frame.getContentPane().add(DoctorsLabel);
 		
 		JButton doctorsButton = new JButton("Click here for Doctors");
+		doctorsButton.setBackground(new Color(255, 228, 225));
 		doctorsButton.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		doctorsButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -122,6 +129,7 @@ public class GUI_PatientInformationPage {
 
 
 		JLabel medHistoryLabel = new JLabel("Medical History:");
+		medHistoryLabel.setForeground(new Color(255, 255, 255));
 		medHistoryLabel.setBounds(49, 344, 226, 33);
 		frame.getContentPane().add(medHistoryLabel);
 
@@ -133,6 +141,7 @@ public class GUI_PatientInformationPage {
 		textArea.setLineWrap(true);
 
 		JButton editButton = new JButton("Edit");
+		editButton.setBackground(new Color(255, 228, 225));
 		editButton.setBounds(270, 475, 171, 41);
 		frame.getContentPane().add(editButton);
 	}
