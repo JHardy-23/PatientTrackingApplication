@@ -16,6 +16,15 @@ public class DoctorInformationGUIController{
         this.account = account;
         updatefName(account.Fname);
         updatelName(account.Lname);
+        if(account.getPrefix().length() > 0){
+            updatePrefix(account.getPrefix());
+        }
+        if(account.getEdu().length() > 0){
+            updateEdu(account.getEdu());
+        }
+        if(account.getProfession().length() > 0){
+            updateProfession(account.getProfession());
+        }
 
         gui.getButton("Click here for Patients").addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
@@ -84,6 +93,7 @@ public class DoctorInformationGUIController{
 
     public void updatePrefix(String newprefix){
         gui.suffixTextField.setText(newprefix);
+        account.setPrefix(newprefix);
     }
 
     public void updatefName(String fname){
@@ -98,11 +108,14 @@ public class DoctorInformationGUIController{
 
     public void updateProfession(String newProf){
         gui.professionTextField.setText(newProf);
+        account.setProfession(newProf);
     }
 
     public void updateEdu(String Edu){
         gui.textArea.setText(Edu);
+        account.setEduHis(Edu);
     }
+
 
     private void WriteChangesToFile() {
         try {

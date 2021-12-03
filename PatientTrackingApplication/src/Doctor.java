@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 
 public class Doctor extends User implements Serializable {
-    private String docId;
+    private String docId, eduHistory, prefix, profession;
     private ArrayList<String> patientIds;
 
     /**
@@ -25,6 +25,9 @@ public class Doctor extends User implements Serializable {
         this.Password = Pass;
         this.patientIds = new ArrayList<String>();
         this.appointments = new ArrayList<Appointment>();
+        this.eduHistory = "";
+        this.prefix = "";
+        this.profession = "";
     }
 
     public String getID() {
@@ -33,6 +36,30 @@ public class Doctor extends User implements Serializable {
 
     public ArrayList<String> getPatientIds() {
         return patientIds;
+    }
+
+    public void setEduHis(String edu){
+        this.eduHistory = edu;
+    }
+
+    public void setPrefix(String newpre){
+        this.prefix = newpre;
+    }
+
+    public void setProfession(String newProf){
+        this.profession = newProf;
+    }
+
+    public String getPrefix(){
+        return this.prefix;
+    }
+
+    public String getProfession(){
+        return this.profession;
+    }
+
+    public String getEdu(){
+        return this.eduHistory;
     }
 
     public boolean addPatient(String id) {
