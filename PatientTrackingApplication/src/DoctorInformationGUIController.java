@@ -16,15 +16,10 @@ public class DoctorInformationGUIController{
         this.account = account;
         updatefName(account.Fname);
         updatelName(account.Lname);
-        if(account.getPrefix().length() > 0){
-            updatePrefix(account.getPrefix());
-        }
-        if(account.getEdu().length() > 0){
-            updateEdu(account.getEdu());
-        }
-        if(account.getProfession().length() > 0){
-            updateProfession(account.getProfession());
-        }
+        updatePrefix(account.getPrefix());
+        updateEdu(account.getEdu());
+        updateProfession(account.getProfession());
+        gui.textArea.setEditable(true);
 
         gui.getButton("Click here for Patients").addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
@@ -80,9 +75,45 @@ public class DoctorInformationGUIController{
                         break;
                     case 4:
                         gui.textArea.setEditable(true);
-                        String z = (String)JOptionPane.showInputDialog(gui.frame, "Please Update your Education (This will delete everything else): ", 
-                        "Update Education", JOptionPane.PLAIN_MESSAGE, null, null, null);
-                        updateEdu(z);
+                        Object[] options3 = {"Add", "Replace"};
+                        int AorR = (Integer)JOptionPane.showOptionDialog(gui.frame, "Would you like to append to add to the end of your education history or replace it?", "Edit Education History", 
+                        JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options3, options3[1]);
+                        String degree, Study, School, all;
+                        switch(AorR){
+                            case 0:
+                                Object[] possibilities4 = {"BS", "BA", "BFA", "MS", "PHD", "Other"};
+                                degree = (String)JOptionPane.showInputDialog(gui.frame, "Please choose the degree you recieved",
+                                "Degree Selection", JOptionPane.PLAIN_MESSAGE,null,possibilities4, null);
+                                if(degree.equals("Other")){
+                                    degree = (String)JOptionPane.showInputDialog(gui.frame, "Please input the Degree you recieved: ", 
+                                    "Degree Selection", JOptionPane.PLAIN_MESSAGE, null, null, null);
+                                }
+                                Study = (String)JOptionPane.showInputDialog(gui.frame, "Please input the type of your degree (EX Biology): ", 
+                                "Degree Edit", JOptionPane.PLAIN_MESSAGE, null, null, null);
+                                School = (String)JOptionPane.showInputDialog(gui.frame, "Please input the school you attended: ", 
+                                "Degree Edit", JOptionPane.PLAIN_MESSAGE, null, null, null);
+                                all = "\n" + degree + " in " + Study + " from " + School;
+                                appendEdu(all);
+                                break;
+                            case 1:
+                                Object[] possibilities5 = {"BS", "BA", "BFA", "MS", "PHD", "Other"};
+                                degree = (String)JOptionPane.showInputDialog(gui.frame, "Please choose the degree you recieved",
+                                "Degree Selection", JOptionPane.PLAIN_MESSAGE,null,possibilities5, null);
+                                if(degree.equals("Other")){
+                                    degree = (String)JOptionPane.showInputDialog(gui.frame, "Please input the Degree you recieved: ", 
+                                    "Degree Selection", JOptionPane.PLAIN_MESSAGE, null, null, null);
+                                }
+                                Study = (String)JOptionPane.showInputDialog(gui.frame, "Please input the type of your degree (EX Biology): ", 
+                                "Degree Edit", JOptionPane.PLAIN_MESSAGE, null, null, null);
+                                School = (String)JOptionPane.showInputDialog(gui.frame, "Please input the school you attended: ", 
+                                "Degree Edit", JOptionPane.PLAIN_MESSAGE, null, null, null);
+                                all = "\n" + degree + " in " + Study + " from " + School;
+                                updateEdu(all);
+                                break;
+                        }
+                        //String z = (String)JOptionPane.showInputDialog(gui.frame, "Please Update your Education (This will delete everything else): ", 
+                        //"Update Education", JOptionPane.PLAIN_MESSAGE, null, null, null);
+                        //updateEdu(z);
                         gui.textArea.setEditable(false);
                         break;
                 }
@@ -114,6 +145,12 @@ public class DoctorInformationGUIController{
     public void updateEdu(String Edu){
         gui.textArea.setText(Edu);
         account.setEduHis(Edu);
+    }
+
+    public void appendEdu(String Edu){
+        gui.textArea.append(Edu);
+        String holder = account.getEdu() + Edu;
+        account.setEduHis(holder);
     }
 
 

@@ -13,8 +13,10 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
+import javax.swing.ScrollPaneConstants;
 
 public class GUI_PatientInformationPage {
 
@@ -132,6 +134,9 @@ public class GUI_PatientInformationPage {
 		medHistoryLabel.setForeground(new Color(255, 255, 255));
 		medHistoryLabel.setBounds(49, 344, 226, 33);
 		frame.getContentPane().add(medHistoryLabel);
+
+		
+
 
 		textArea = new JTextArea(2 , 20);
 		textArea.setBounds(380,347,236,114);
